@@ -199,7 +199,7 @@ body {
 
     .my-date {
         position: absolute;
-        left: 47%;
+        left: 44%;
         width: 40%;
         height: 225px;
         background-color: rgb(34, 34, 39);
@@ -210,7 +210,7 @@ body {
         position: fixed;
         top: 10%;
         left: 30%;
-        width: 40%;
+        width: 35%;
         border: #00000000;
         border-radius: 20px;
     }
