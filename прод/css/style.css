@@ -36,6 +36,7 @@ body {
         font-family: 'Inter', sans-serif;
         margin-left: auto;
         margin-right: auto;
+
     }
     
     .button1.active{
@@ -62,6 +63,7 @@ body {
     .head_button.active p,
     .head_button1.active p {
         font-weight: 600;
+        font-family: 'Inter', sans-serif;
     }
 
     .head_button p,
