@@ -3,6 +3,7 @@ body {
     width: 100%;
     height: auto;
     background-color: black;
+    overflow-x: hidden;
 }
 
 @media screen and (min-width: 1025px) {
@@ -512,12 +513,19 @@ body {
 }
 
 .consult-table-wrapper {
-    width: 80%;
+    min-width: 85%;
+    width: 85%;
     height: calc(100vh - 180px);
     overflow: auto;
     margin: 40px auto;
     margin-left: 12%;
     border-radius: 30px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.consult-table-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome, Safari и Edge */
 }
 
 .consult-table {
@@ -584,14 +592,89 @@ body {
     z-index: 1;
 }
 
-.consult-table-wrapper {
-    /* ...твой остальной стиль... */
-    
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
+:root {
+    scale: calc(100vw / 1920);
 }
 
-.consult-table-wrapper::-webkit-scrollbar {
-    display: none; /* Chrome, Safari и Edge */
+.schedule-container {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 3rem 3rem 4rem;
+    transform: scale(var(--scale));
+    transform-origin: top center;
 }
-
+.schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+.schedule-header .title {
+    font-family: sans-serif;
+    font-size: 1.6rem;
+    color: #fff;
+}
+.schedule-header .nav {
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+    color: #fff;
+}
+.nav-arrow {
+    text-decoration: none;
+    font-size: 2rem;
+    margin: 0 1rem;
+    color: #fff;
+}
+.week-range {
+    font-size: 1.2rem;
+    color: #fff;
+}
+.schedule {
+    display: grid;
+    grid-template-columns: 40px repeat(6, 1fr);
+    grid-template-rows: min-content repeat(7, 120px);
+    background: transparent;
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: sans-serif;
+    color: #fff;
+}
+.cell {
+    background: rgb(34, 34, 39);
+    padding: 8px;
+    font-size: 1rem;
+    line-height: 1.3;
+    text-align: left;
+    border-top: thin solid rgba(255, 255, 255, 0.1);
+    border-left: thin solid rgba(255, 255, 255, 0.1);
+}
+.cell.header {
+    border-top: 0;
+    border-left: thin solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+    background: rgb(105, 169, 155);
+    font-weight: 600;
+    padding: 2px 8px;
+}
+.cell.index {
+    border-left: 0;
+    border-top: thin solid rgba(255, 255, 255, 0.1);
+    border-bottom: thin solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    background: rgb(105, 169, 155);
+    font-weight: 500;
+}
+p.date,
+p.time,
+p.room {
+    display: block;
+    font-size: 0.9rem;
+    color: #fff;
+    margin: 0;
+}
+.empty {
+    text-align: left;
+    font-style: italic;
+}
