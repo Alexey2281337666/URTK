@@ -510,3 +510,88 @@ body {
 .save-button:hover {
     background-color: #0056b3;
 }
+
+.consult-table-wrapper {
+    width: 80%;
+    height: calc(100vh - 180px);
+    overflow: auto;
+    margin: 40px auto;
+    margin-left: 12%;
+    border-radius: 30px;
+}
+
+.consult-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1000px;
+    font-family: Arial, sans-serif;
+    border: 5px solid rgb(0, 0, 0); /* Убираем внешнюю рамку */
+    
+}
+
+.consult-table thead th {
+    position: sticky;
+    top: 0;
+    background-color: rgb(34, 34, 39);
+    border: 1px solid #ccc;
+    padding: 16px;
+    text-align: left;
+    z-index: 2;
+    color: white;
+}
+
+.consult-table thead th:first-child {
+    left: 0;
+    z-index: 3;
+}
+
+.consult-table thead th {
+    padding: 30px 12px;
+    white-space: nowrap;
+    height: 60px;
+}
+
+.consult-table tbody td {
+    padding: 30px 12px;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+    height: 60px;
+}
+
+.consult-table tbody tr:nth-child(odd) {
+    background-color: #69A99B;
+    color: white;
+}
+
+/* Чётные строки: только первая ячейка */
+.consult-table tbody tr:nth-child(even) td:first-child {
+    background-color: rgb(34, 34, 39);
+    color: white;
+    font-weight: bold;
+}
+
+/* Чётные строки: остальные ячейки */
+.consult-table tbody tr:nth-child(even) td:not(:first-child) {
+    background-color: #090f0e;
+    color: white;
+}
+
+.consult-table tbody td:first-child {
+    position: sticky;
+    left: 0;
+    background: inherit;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.consult-table-wrapper {
+    /* ...твой остальной стиль... */
+    
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.consult-table-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome, Safari и Edge */
+}
+
