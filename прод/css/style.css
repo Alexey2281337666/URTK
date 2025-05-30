@@ -113,11 +113,6 @@ body {
         transition: stroke 0.3s ease;
     }
     
-    .dropdown-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    }
 
     .dropdown-button {
         width: 100%;
@@ -693,3 +688,4 @@ p.room {
 .show-consultation {
     display: flex !important; /* Показываем при активации */
 }
+
