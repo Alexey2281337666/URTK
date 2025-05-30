@@ -37,9 +37,23 @@ body {
         font-family: 'Inter', sans-serif;
         margin-left: auto;
         margin-right: auto;
-
     }
-    
+    .save-button {
+        width: 98,1% !important;
+        height: 50px !important;
+        margin-top: 0,5%;
+        font-size: 16px !important;
+        transform: none !important;
+        padding: 0 15px;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-family: 'Inter', sans-serif;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
     .button1.active{
     left: 2%;
     width: 38%;
@@ -198,6 +212,11 @@ body {
         height: 225px;
         background-color: rgb(34, 34, 39);
         border-radius: 20px;
+    }
+
+    .expanded {
+        transition: all 0.3s ease;
+        padding-bottom: 5%; /* или другой параметр, чтобы визуально увеличить высоту */
     }
 
     .my-date {
@@ -372,7 +391,8 @@ body {
 
 .head_button.active,
 .head_button1.active,
-.button1.active {
+.button1.active,
+.save-button.active {
     position: relative;
     z-index: 1;
     border: 2px solid #69A99B; /* Основная обводка */
@@ -386,18 +406,19 @@ body {
 
 @keyframes borderPulse {
     0% {
-        box-shadow: 0 0 0 0 rgba(105, 169, 155, 0.3),
-                    inset 0 0 0 0 rgba(105, 169, 155, 0.2);
+        box-shadow: 0 0 0 0 rgba(105, 169, 155, 0.4),
+                    inset 0 0 0 0 rgba(105, 169, 155, 0.3);
     }
     50% {
-        box-shadow: 0 0 15px 4px rgba(105, 169, 155, 0.2),
-                    inset 0 0 10px 2px rgba(105, 169, 155, 0.1);
+        box-shadow: 0 0 25px 6px rgba(105, 169, 155, 0.4),
+                    inset 0 0 15px 4px rgba(105, 169, 155, 0.3);
     }
     100% {
-        box-shadow: 0 0 0 0 rgba(105, 169, 155, 0.3),
-                    inset 0 0 0 0 rgba(105, 169, 155, 0.2);
+        box-shadow: 0 0 0 0 rgba(105, 169, 155, 0.4),
+                    inset 0 0 0 0 rgba(105, 169, 155, 0.3);
     }
 }
+
 
 .head_button.active::after,
 .head_button1.active::after,
@@ -491,7 +512,6 @@ body {
 }
 
 .save-area {
-    background-color: #444; /* серый фон */
     padding: 20px;
     margin-top: 20px;
     border-radius: 10px;
@@ -503,7 +523,7 @@ body {
     padding: 15px;
     font-size: 16px;
     font-family: 'Inter', sans-serif;
-    background-color: #007bff;
+    background-color: #69A99B;;
     color: white;
     border: none;
     border-radius: 8px;
