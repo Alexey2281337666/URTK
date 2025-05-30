@@ -27,7 +27,7 @@
             </svg>
             <p>Главная</p>
         </a>
-        <a class="head_button active" id="allSchedulesBtn">
+        <a class="head_button active" id="allSchedulesBtn" href="all_rasp.html">
             <svg style="margin-top: 8px; margin-left: 10px; margin-right: 15px;" xmlns="http://www.w3.org/2000/svg"
                 width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days w-5 h-5">
@@ -45,7 +45,7 @@
             <p>Все расписания</p>
         </a>
 
-        <a class="head_button consultation-button" href="consultation.html">
+        <a class="head_button consultation-button" href="consultation.html" c>
             <svg style="margin-top: 8px; margin-left: 10px; margin-right: 15px;" xmlns="http://www.w3.org/2000/svg"
                 width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check">
@@ -214,14 +214,64 @@
     </script>
 
     <script>
-        const toggle = document.getElementById('toggleDropdown');
-        const dropdown = document.getElementById('dropdownContent');
+document.addEventListener("DOMContentLoaded", function () {
+    const headButtons = document.querySelectorAll('.head_button');
+    const dropdownContainers = document.querySelectorAll('.dropdown-container');
 
-        toggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+    // Функция для закрытия всех выпадающих меню и деактивации кнопок
+    function closeAllDropdowns() {
+        dropdownContainers.forEach(dropdown => {
+            dropdown.classList.remove('open');
         });
-    </script>
+        headButtons.forEach(button => {
+            button.classList.remove('active');
+        });
+    }
+
+    // Обработчик клика на кнопки
+    headButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            const dropdown = this.nextElementSibling;
+            const href = this.getAttribute('href');
+
+            // Определяем, нужно ли предотвращать переход
+            const isLinkToPage = href && href !== '#' && !href.startsWith('javascript');
+
+            if (!isLinkToPage) {
+                e.preventDefault(); // предотвращаем только для псевдоссылок
+            }
+
+            const isActive = this.classList.contains('active');
+
+            if (isActive) {
+                closeAllDropdowns();
+            } else {
+                closeAllDropdowns();
+                this.classList.add('active');
+                if (dropdown && dropdown.classList.contains('dropdown-container')) {
+                    dropdown.classList.add('open');
+                }
+            }
+        });
+    });
+
+    // Предотвращаем закрытие меню при клике внутри dropdown-container
+    dropdownContainers.forEach(dropdown => {
+        dropdown.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    });
+
+    // Закрытие меню при клике вне кнопок и меню
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.head_button') && !e.target.closest('.dropdown-container')) {
+            closeAllDropdowns();
+        }
+    });
+});
+</script>
+
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
