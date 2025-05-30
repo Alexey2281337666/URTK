@@ -38,20 +38,6 @@ body {
         margin-left: auto;
         margin-right: auto;
     }
-    .save-button {
-        width: 98,1% !important;
-        height: 50px !important;
-        margin-top: 0,5%;
-        font-size: 16px !important;
-        transform: none !important;
-        padding: 0 15px;
-        color: white;
-        text-decoration: none;
-        border-radius: 30px;
-        font-family: 'Inter', sans-serif;
-        margin-left: auto;
-        margin-right: auto;
-    }
 
 
     .button1.active{
@@ -76,13 +62,15 @@ body {
     }
 
     .head_button.active p,
-    .head_button1.active p {
+    .head_button1.active p,
+    .save-button.active p {
         font-weight: 600;
         font-family: 'Inter', sans-serif;
     }
 
     .head_button p,
-    .head_button1 p {
+    .head_button1 p,
+    .save-button p {
         font-weight: 400;
         white-space: nowrap;
         overflow: hidden;
@@ -214,9 +202,10 @@ body {
         border-radius: 20px;
     }
 
-    .expanded {
-        transition: all 0.3s ease;
-        padding-bottom: 5%; /* или другой параметр, чтобы визуально увеличить высоту */
+    .my-schedule.expanded, 
+    .my-date.expanded {
+        height: 300px; /* Новая высота */
+        transition: height 0.3s ease; /* Плавная анимация */
     }
 
     .my-date {
@@ -294,8 +283,6 @@ body {
         background-color: oklch(25.52% .0091 285.53);
         border-radius: 20px;
     }
-
-
 }
 
 @media screen and (max-width: 1025px) {
@@ -362,7 +349,8 @@ body {
 }
 
 .head_button.active,
-.head_button1.active {
+.head_button1.active, 
+.save-button {
     position: relative;
     z-index: 1;
     border: 2px solid white; /* Белая основная обводка */
@@ -392,7 +380,7 @@ body {
 .head_button.active,
 .head_button1.active,
 .button1.active,
-.save-button.active {
+.save-button {
     position: relative;
     z-index: 1;
     border: 2px solid #69A99B; /* Основная обводка */
@@ -513,25 +501,23 @@ body {
 
 .save-area {
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 2px;
     border-radius: 10px;
     transition: all 0.3s ease;
 }
 
 .save-button {
-    width: 100%;
+    width: 99%;
     padding: 15px;
     font-size: 16px;
+    margin-bottom: 20px !important;
     font-family: 'Inter', sans-serif;
-    background-color: #69A99B;;
-    color: white;
+    background-color: rgb(0, 0, 0);
+    color: #69A99B;
+    border: 1px solid #69A99B;
     border: none;
-    border-radius: 8px;
+    border-radius: 30px;
     cursor: pointer;
-}
-
-.save-button:hover {
-    background-color: #0056b3;
 }
 
 .consult-table-wrapper {
@@ -699,4 +685,11 @@ p.room {
 .empty {
     text-align: left;
     font-style: italic;
+}
+.consultation-button {
+    display: none; /* Скрыта по умолчанию */
+}
+
+.show-consultation {
+    display: flex !important; /* Показываем при активации */
 }

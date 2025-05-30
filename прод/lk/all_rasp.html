@@ -27,7 +27,7 @@
             </svg>
             <p>Главная</p>
         </a>
-        <a class="head_button active">
+        <a class="head_button active" id="allSchedulesBtn">
             <svg style="margin-top: 8px; margin-left: 10px; margin-right: 15px;" xmlns="http://www.w3.org/2000/svg"
                 width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days w-5 h-5">
@@ -43,6 +43,19 @@
                 <path d="M16 18h.01"></path>
             </svg>
             <p>Все расписания</p>
+        </a>
+
+        <a class="head_button consultation-button" href="consultation.html">
+            <svg style="margin-top: 8px; margin-left: 10px; margin-right: 15px;" xmlns="http://www.w3.org/2000/svg"
+                width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+                <path d="M9 16l2 2 4-4"></path>
+            </svg>
+            <p>Консультации</p>
         </a>
 
         <a class="head_button" href="home-work.html">
@@ -212,65 +225,81 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const scheduleTypeBtn = document.querySelectorAll(".input_combobox")[0];
-            const scheduleDropdown = document.getElementById("scheduleTypeDropdown");
-            const scheduleLabel = scheduleTypeBtn.querySelector("span");
+    const scheduleTypeBtn = document.querySelectorAll(".input_combobox")[0];
+    const scheduleDropdown = document.getElementById("scheduleTypeDropdown");
+    const scheduleLabel = scheduleTypeBtn.querySelector("span");
 
-            const groupBtn = document.querySelectorAll(".input_combobox")[1];
-            const groupDropdown = document.getElementById("groupDropdown");
-            const groupLabel = groupBtn.querySelector("span");
-            const secondLabel = document.getElementById("secondLabel");
+    const groupBtn = document.querySelectorAll(".input_combobox")[1];
+    const groupDropdown = document.getElementById("groupDropdown");
+    const groupLabel = groupBtn.querySelector("span");
+    const secondLabel = document.getElementById("secondLabel");
 
-            const saveArea = document.getElementById("saveArea");
+    const saveArea = document.getElementById("saveArea");
 
-            const optionsByType = {
-                "Студент": ["ИС-127", "ИС-128", "ИС-129"],
-                "По преподавателю": ["Иванов", "Петров", "Сидоров"],
-                "По аудитории": ["101", "202", "303"]
-            };
+    const optionsByType = {
+        "Студент": ["ИС-127", "ИС-128", "ИС-129"],
+        "По преподавателю": ["Иванов", "Петров", "Сидоров"],
+        "По аудитории": ["101", "202", "303"]
+    };
 
-            let currentType = "Студент";
-            let currentGroupOption = null;
+    let currentType = "Студент";
+    let currentGroupOption = null;
 
-            function checkSelections() {
-                if (scheduleLabel.textContent !== "" && currentGroupOption !== null) {
-                    saveArea.classList.remove("hidden");
-                } else {
-                    saveArea.classList.add("hidden");
-                }
-            }
+    function checkSelections() {
+        const myScheduleBlock = document.querySelector('.my-schedule');
+        const myDateBlock = document.querySelector('.my-date');
+        const isSelected = (scheduleLabel.textContent !== "" && currentGroupOption !== null);
 
-            function updateGroupOptions(type) {
-                groupDropdown.innerHTML = "";
-                optionsByType[type].forEach(optionText => {
-                    const btn = document.createElement("button");
-                    btn.className = "dropdown-option";
-                    btn.textContent = optionText;
-                    btn.addEventListener("click", function (e) {
-                        e.preventDefault();
-                        groupLabel.textContent = optionText;
-                        currentGroupOption = optionText;
-                        groupDropdown.classList.add("hidden");
-                        checkSelections();
-                    });
-                    groupDropdown.appendChild(btn);
-                });
+        if (isSelected) {
+            myScheduleBlock.classList.add('expanded');
+            myDateBlock.classList.add('expanded');
+        } else {
+            myScheduleBlock.classList.remove('expanded');
+            myDateBlock.classList.remove('expanded');
+        }
 
-                secondLabel.textContent = {
-                    "Студент": "Группа",
-                    "По преподавателю": "Преподаватель",
-                    "По аудитории": "Аудитория"
-                }[type];
+        if (isSelected) {
+            saveArea.classList.remove("hidden");
+        } else {
+            saveArea.classList.add("hidden");
+        }
+    }
 
-                if (currentGroupOption && optionsByType[type].includes(currentGroupOption)) {
-                    groupLabel.textContent = currentGroupOption;
-                } else {
-                    groupLabel.textContent = "Выберите...";
-                    currentGroupOption = null;
-                }
-
+    function updateGroupOptions(type) {
+        groupDropdown.innerHTML = "";
+        optionsByType[type].forEach(optionText => {
+            const btn = document.createElement("button");
+            btn.className = "dropdown-option";
+            btn.textContent = optionText;
+            btn.addEventListener("click", function (e) {
+                e.preventDefault();
+                groupLabel.textContent = optionText;
+                currentGroupOption = optionText;
+                groupDropdown.classList.add("hidden");
                 checkSelections();
-            }
+            });
+            groupDropdown.appendChild(btn);
+        });
+
+        // Исправление: удаление классов ВНЕ цикла
+        document.querySelector('.my-schedule').classList.remove('expanded');
+        document.querySelector('.my-date').classList.remove('expanded');
+
+        secondLabel.textContent = {
+            "Студент": "Группа",
+            "По преподавателю": "Преподаватель",
+            "По аудитории": "Аудитория"
+        }[type];
+
+        if (currentGroupOption && optionsByType[type].includes(currentGroupOption)) {
+            groupLabel.textContent = currentGroupOption;
+        } else {
+            groupLabel.textContent = "Выберите...";
+            currentGroupOption = null;
+        }
+
+        checkSelections();
+    }
 
             scheduleTypeBtn.addEventListener("click", function (e) {
                 e.preventDefault();
@@ -308,6 +337,38 @@
             updateGroupOptions(currentType); // начальная инициализация
         });
     </script>
+
+    <script>
+        // Добавляем обработчик для кнопки "Все расписания"
+        document.getElementById('allSchedulesBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Переключаем видимость кнопки "Консультации"
+            const consultationBtn = document.querySelector('.consultation-button');
+            consultationBtn.classList.toggle('show-consultation');
+            
+            // Сдвигаем последующие кнопки вниз
+            const buttons = document.querySelectorAll('.head_button');
+            let found = false;
+            
+            buttons.forEach(btn => {
+                if (btn.classList.contains('consultation-button')) {
+                    afterConsultation = true;
+                    return;
+                }
+                
+                if (afterConsultation) {
+                    if (consultationBtn.classList.contains('show-consultation')) {
+                        btn.style.marginTop = '20px';
+                    } else {
+                        btn.style.marginTop = '';
+                    }
+            }
+            });
+        });
+    </script>
+    
+
 
 </body>
 
