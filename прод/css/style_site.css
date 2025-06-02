@@ -7,6 +7,7 @@ h3 {
 
 .bgc {
     background-color: oklch(19.52% .0091 285.53);
+    height: 50%;
 }
 
 .flex {
@@ -15,7 +16,7 @@ h3 {
 }
 
 .margin {
-    margin: auto;
+    margin: 10px;
 }
 
 .font {
@@ -23,7 +24,12 @@ h3 {
     color: white;
 }
 .margin_sign{
+    display: flex;
     margin: 20px;
+    margin-top: 242px;
+    margin-left: 30%;
+    align-items: center;
+    justify-content: center;
 }
 @media screen and (min-width: 1025px) {
     .margin-20 {

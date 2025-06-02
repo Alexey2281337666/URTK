@@ -4,6 +4,7 @@ body {
     height: auto;
     background-color: black;
     overflow-x: hidden;
+    margin: 0px auto; 
 }
 
 @media screen and (min-width: 1025px) {
@@ -196,6 +197,14 @@ body {
         background-color: rgb(34, 34, 39);
         border-radius: 20px;
     }
+    .my-schedule_2 {
+        position: absolute;
+        left: 18%;
+        width: 64%;
+        height: 225px;
+        background-color: rgb(34, 34, 39);
+        border-radius: 20px;
+    }
 
     .my-schedule.expanded, 
     .my-date.expanded {
@@ -222,6 +231,7 @@ body {
     }
 
     .img_logo {
+        width: 30px;
         position: absolute;
         left: 85%;
     }
@@ -263,7 +273,7 @@ body {
     .button_sign {
         width: 38%;
         height: 50px;
-        top: 350px;
+        margin-top: 30px;
         border: #00000000;
         border-radius: 20px;
         background-color: oklch(65.14% .1859 259.6);
@@ -345,7 +355,8 @@ body {
 
 .head_button.active,
 .head_button1.active, 
-.save-button {
+.save-button,
+.button_sign {
     position: relative;
     z-index: 1;
     border: 2px solid white; /* Белая основная обводка */
@@ -375,7 +386,8 @@ body {
 .head_button.active,
 .head_button1.active,
 .button1.active,
-.save-button {
+.save-button,
+.button_sign {
     position: relative;
     z-index: 1;
     border: 2px solid #69A99B; /* Основная обводка */
@@ -600,9 +612,10 @@ body {
 }
 
 .schedule-container {
-    width: 90%;
+    width: 100%;
     max-width: 1920px;
     margin: 0 auto;
+    margin-left: 12%;
     padding: 3rem 3rem 4rem;
     transform: scale(var(--scale));
     transform-origin: top center;
