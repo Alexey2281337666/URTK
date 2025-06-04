@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_site.css">
     <title>Расписание УРТК</title>
+    <style>
+        .input-error {
+            border: 2px solid red !important;
+            outline: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -15,142 +21,144 @@
                 <h2 class="h2_sign">Расписание УРТК <img class="img_logo" src="../image/лого.png"></h2>
                 <h1 class="h1_sign">Регистрация на платформе</h1>
             </div>
-            <div class="signup">
-                <div class="row">
-                    <div class="margin">
-                        <label class="font" style="display: block;" for="">Имя</label>
-                        <input class="input_sign" name="name" placeholder="Ваше имя">
+            <div class="form-container">
+                <div class="signup">
+                    <div class="row">
+                        <div class="margin">
+                            <label class="font" style="display: block;" for="">Имя</label>
+                            <input class="input_sign" name="name" placeholder="Ваше имя">
+                        </div>
+                        <div class="margin">
+                            <label class="font" style="display: block;">Email</label>
+                            <input class="input_sign" name="email" placeholder="Email">
+                        </div>
                     </div>
-                    <div class="margin">
-                        <label class="font" style="display: block;">Email</label>
-                        <input class="input_sign" name="email" placeholder="Email">
+                    <div class="row">
+                        <div class="margin">
+                            <label class="font" style="display: block;">Пароль</label>
+                            <input class="input_sign" name="password" placeholder="Ваш пароль">
+                        </div>
+                        <div class="margin">
+                            <label class="font" style="display: block;">Повторите пароль</label>
+                            <input class="input_sign" name="confirmPassword" placeholder="Ваш пароль">
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="margin">
-                        <label class="font" style="display: block;">Пароль</label>
-                        <input class="input_sign" name="password" placeholder="Ваш пароль">
-                    </div>
-                    <div class="margin">
-                        <label class="font" style="display: block;">Повторите пароль</label>
-                        <input class="input_sign" name="confirmPassword" placeholder="Ваш пароль">
-                    </div>
-                </div>
-            </div>
-            <div class="my-schedule_2">
-            <h4
-                style="
-                color: white;
-                font-family: 'Inter', sans-serif;
-                margin-left: 3%;
-                ">Ваше расписание
-            </h4>
-            <p  
-                class="label"
-                style="
-                margin-bottom: 1%;
-                color: white;
-                font-family: 'Inter', sans-serif;
-                margin-left: 3%;
-                font-size: 13px;
-                margin-top: -1%;
-                ">Тип расписания
-            </p>
-            <button
-                class="input_combobox"
-                style="position: relative"
-                aria-haspopup="true"
-                aria-expanded="false"
-                ;>
-                <span
+                <div class="my-schedule_2">
+                <h4
                     style="
-                    position: relative;
-                    text-align: left;
-                    top: 0;
-                    font-family: 'Inter', sans-serif;
-                    margin-right: 90%;
                     color: white;
-                    white-space: nowrap;
-                    display: inline-block;
-                    max-width: 100%;
-                    ">Студент
-                </span>
-                <svg
-                    style="
-                        position: absolute;
-                        right: 10px;
-                        top: 50%;
-                        transform: translateY(-50%);
-                    "
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="m7 15 5 5 5-5"></path>
-                    <path d="m7 9 5-5 5 5"></path>
-                </svg>
-            </button>
-                <div id="scheduleTypeDropdown" class="dropdown hidden">
-                    <button class="dropdown-option">Студент</button>
-                    <button class="dropdown-option">По преподавателю</button>
-                </div>
-                <p
-                    id="secondLabel"
+                    font-family: 'Inter', sans-serif;
+                    margin-left: 3%;
+                    ">Ваше расписание
+                </h4>
+                <p  
+                    class="label"
                     style="
                     margin-bottom: 1%;
-                    margin-top: 15px;
                     color: white;
                     font-family: 'Inter', sans-serif;
                     margin-left: 3%;
                     font-size: 13px;
-                    ">
-                    Группа
+                    margin-top: -1%;
+                    ">Тип расписания
                 </p>
-            <button
-                class="input_combobox"
-                style="
-                position: relative;
-                background-color: black;
-                color: white;
-                text-align: left;
-                ">
-                <span
+                <button
+                    class="input_combobox"
+                    style="position: relative"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    ;>
+                    <span
+                        style="
+                        position: relative;
+                        text-align: left;
+                        top: 0;
+                        font-family: 'Inter', sans-serif;
+                        margin-right: 90%;
+                        color: white;
+                        white-space: nowrap;
+                        display: inline-block;
+                        max-width: 100%;
+                        ">Студент
+                    </span>
+                    <svg
+                        style="
+                            position: absolute;
+                            right: 10px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                        "
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="m7 15 5 5 5-5"></path>
+                        <path d="m7 9 5-5 5 5"></path>
+                    </svg>
+                </button>
+                    <div id="scheduleTypeDropdown" class="dropdown hidden">
+                        <button class="dropdown-option">Студент</button>
+                        <button class="dropdown-option">По преподавателю</button>
+                    </div>
+                    <p
+                        id="secondLabel"
+                        style="
+                        margin-bottom: 1%;
+                        margin-top: 15px;
+                        color: white;
+                        font-family: 'Inter', sans-serif;
+                        margin-left: 3%;
+                        font-size: 13px;
+                        ">
+                        Группа
+                    </p>
+                <button
+                    class="input_combobox"
                     style="
                     position: relative;
-                    left: 5px;
-                    top: 0;
-                    font-family: 'Inter', sans-serif;
-                    "
-                    >Выберите...
-                </span>
-                <svg
-                    style="
-                        position: absolute;
-                        right: 10px;
-                        top: 50%;
-                        transform: translateY(-50%);
-                    "
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="m7 15 5 5 5-5"></path>
-                    <path d="m7 9 5-5 5 5"></path>
-                </svg>
-            </button>
-            <div id="groupDropdown" class="dropdown hidden"></div>
+                    background-color: black;
+                    color: white;
+                    text-align: left;
+                    ">
+                    <span
+                        style="
+                        position: relative;
+                        left: 5px;
+                        top: 0;
+                        font-family: 'Inter', sans-serif;
+                        "
+                        >Выберите...
+                    </span>
+                    <svg
+                        style="
+                            position: absolute;
+                            right: 10px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                        "
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="m7 15 5 5 5-5"></path>
+                        <path d="m7 9 5-5 5 5"></path>
+                    </svg>
+                </button>
+                <button class="button_sign margin_sign" id="registerBtn">Зарегестрироваться</button>
+                <div id="groupDropdown" class="dropdown hidden"></div>
+            </div>
         </div>
-            <button class="button_sign margin_sign" id="registerBtn">Зарегестрироваться</button>
 
         </form>
     </div>

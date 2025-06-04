@@ -196,6 +196,16 @@ body {
         background-color: rgb(34, 34, 39);
         border-radius: 20px;
     }
+    .my-schedule_2 {
+        position: absolute;
+        margin-top: 10px;
+        left: 14%;
+        width: 72%;
+        height: 225px;
+        background-color: rgb(34, 34, 39);
+        border-radius: 20px;
+    }
+
 
     .my-schedule.expanded, 
     .my-date.expanded {
@@ -224,6 +234,7 @@ body {
     .img_logo {
         position: absolute;
         left: 85%;
+        width: 30px;
     }
 
     .h2_sign {
@@ -263,7 +274,7 @@ body {
     .button_sign {
         width: 38%;
         height: 50px;
-        top: 350px;
+        top: 20px;
         border: #00000000;
         border-radius: 20px;
         background-color: oklch(65.14% .1859 259.6);
@@ -345,7 +356,8 @@ body {
 
 .head_button.active,
 .head_button1.active, 
-.save-button {
+.save-button,
+.button_sign {
     position: relative;
     z-index: 1;
     border: 2px solid white; /* Белая основная обводка */
@@ -375,7 +387,8 @@ body {
 .head_button.active,
 .head_button1.active,
 .button1.active,
-.save-button {
+.save-button,
+.button_sign {
     position: relative;
     z-index: 1;
     border: 2px solid #69A99B; /* Основная обводка */
