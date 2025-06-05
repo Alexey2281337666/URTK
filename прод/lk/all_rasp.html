@@ -175,7 +175,7 @@
             </button>
             <div id="groupDropdown" class="dropdown hidden"></div>
             <div id="saveArea" class="save-area hidden">
-                <button class="save-button">Сохранить расписание</button>
+                <button class="save-button" id="saveButton">Сохранить расписание</button>
             </div>
         </div>
         <form>
@@ -417,8 +417,34 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     </script>
-    
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const saveButton = document.getElementById("saveButton");
 
+        saveButton.addEventListener("click", function () {
+            const selectedType = document.querySelector(".input_combobox span").textContent;
+            const selectedGroup = document.querySelectorAll(".input_combobox span")[1].textContent;
+
+            if (selectedType === "Студент") {
+                switch (selectedGroup) {
+                    case "ИС-127":
+                        window.location.href = "my-schedule.html";
+                        break;
+                    case "ИС-128":
+                        window.location.href = "my-schedule_is-128.html";
+                        break;
+                    case "ИС-129":
+                        window.location.href = "my-schedule_is-129.html";
+                        break;
+                    default:
+                        alert("Выберите корректную группу!");
+                }
+            } else {
+                alert("Для выбора расписания нужна категория 'Студент'.");
+            }
+        });
+    });
+</script>
 
 </body>
 
