@@ -2,92 +2,244 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css" />
     <meta charset="utf-8" />
     <title>Домашнее задание</title>
 </head>
 
 <body>
     <div class="head">
-        <div class="logo-title">
-            <img src="../image/лого.png" alt="Логотип" class="logo-img">
-            <div class="logo-text">
-                <span>Расписание</span><br>
-                <span>УРТК</span>
-            </div>
-        </div>
-        <a class="head_button" href="my-schedule.html">
-            <svg style="margin-top: 8px; margin-left: 10px; margin-right: 15px;" xmlns="http://www.w3.org/2000/svg"
-                width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house w-5 h-5">
-                <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
-                <path
-                    d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z">
-                </path>
+    <div class="logo-title">
+        <img src="../image/лого.png" alt="Логотип" class="logo-img" />
+        <div class="logo-text">
+        <span>Расписание</span><br />
+        <span>УРТК</span>
+    </div>
+    </div>
+    <a class="head_button" href="my-schedule.html">
+        <svg style="margin-top: 8px; margin-left: 10px; margin-right: 15px" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house w-5 h-5">
+            <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
+            <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+        <p>Главная</p>
+    </a>
+    <div class="dropdown-container">
+        <a class="head_button1" href="all_rasp.html" id="toggleDropdown">
+            <svg style="margin-top: 8px; margin-left: 10px; margin-right: 15px" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days w-5 h-5">
+                <path d="M8 2v4"></path>
+                <path d="M16 2v4"></path>
+                <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                <path d="M3 10h18"></path>
+                <path d="M8 14h.01"></path>
+                <path d="M12 14h.01"></path>
+                <path d="M16 14h.01"></path>
+                <path d="M8 18h.01"></path>
+                <path d="M12 18h.01"></path>
+                <path d="M16 18h.01"></path>
             </svg>
-            <p>Главная</p>
+            <p>Все расписания</p>
         </a>
-        <div class="dropdown-container">
-            <a class="head_button1" href="all_rasp.html" id="toggleDropdown">
-                <svg style="margin-top: 8px; margin-left: 10px; margin-right: 15px;" xmlns="http://www.w3.org/2000/svg"
-                    width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days w-5 h-5">
-                    <path d="M8 2v4"></path>
-                    <path d="M16 2v4"></path>
-                    <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-                    <path d="M3 10h18"></path>
-                    <path d="M8 14h.01"></path>
-                    <path d="M12 14h.01"></path>
-                    <path d="M16 14h.01"></path>
-                    <path d="M8 18h.01"></path>
-                    <path d="M12 18h.01"></path>
-                    <path d="M16 18h.01"></path>
-                </svg>
-                <p>Все расписания</p>
-            </a>
-        </div>
-        <a class="head_button" href="home-work.html">
-            <svg style="margin-top: 9px; margin-left: 10px; margin-right: 15px;"
-                class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                width="30" height="30" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 6.03v13m0-13c-2.819-.831-4.715-1.076-8.029-1.023A.99.99 0 0 0 3 6v11c0 .563.466 1.014 1.03 1.007 3.122-.043 5.018.212 7.97 1.023m0-13c2.819-.831 4.715-1.076 8.029-1.023A.99.99 0 0 1 21 6v11c0 .563-.466 1.014-1.03 1.007-3.122-.043-5.018.212-7.97 1.023" />
-            </svg>
+    </div>
+    <a class="head_button" href="home-work.html">
+        <svg style="margin-top: 9px; margin-left: 10px; margin-right: 15px" class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.03v13m0-13c-2.819-.831-4.715-1.076-8.029-1.023A.99.99 0 0 0 3 6v11c0 .563.466 1.014 1.03 1.007 3.122-.043 5.018.212 7.97 1.023m0-13c2.819-.831 4.715-1.076 8.029-1.023A.99.99 0 0 1 21 6v11c0 .563-.466 1.014-1.03 1.007-3.122-.043-5.018.212-7.97 1.023" />
+        </svg>
 
-            <p>Домашнее задание</p>
-        </a>
-        <a class="head_button" href="my-progress.html">
-            <svg style="margin-top: 8px; margin-left: 10px; margin-right: 15px;" class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                width="30" height="30" fill="none" viewBox="0 0 24 24">
-                <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4" />
-            </svg>
+        <p>Домашнее задание</p>
+    </a>
+    <a class="head_button" href="my-progress.html">
+        <svg style="margin-top: 8px; margin-left: 10px; margin-right: 15px" class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" viewBox="0 0 24 24">
+            <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4" />
+        </svg>
 
-            <p>Успеваемость</p>
-        </a>
-        <div class="spacer"></div>
+        <p>Успеваемость</p>
+    </a>
+    <div class="spacer"></div>
         <a class="head_button profile-button" href="profile.html">
-            <svg style="margin-top: 8px; margin-left: 10px; margin-right: 15px;" xmlns="http://www.w3.org/2000/svg"
-                width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user w-5 h-5">
+            <svg style="margin-top: 8px; margin-left: 10px; margin-right: 15px" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user w-5 h-5">
                 <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
             </svg>
             <p>Профиль</p>
         </a>
-
     </div>
-    <script>
-    document.querySelectorAll('.head_button, .head_button1').forEach(link => {
-        const currentPage = window.location.pathname.split('/').pop();
-        const linkPage = link.getAttribute('href');
+    <div class="week-wrapper">
+        <div class="header-container">
+            <div class="page-title">Домашние задания</div>
+            <div class="name-header">
+            <div class="week-info">
+            <div class="title">Александр Сергеевич Щукин</div>
+        </div>
+        </div>
+    </div>
+    <div class="week-header">
+      <button class="arrow">&lt;</button>
+      <div class="week-info">
+        <div class="title">Текущая неделя</div>
+        <div class="date-range">28 апреля — 4 мая 2025</div>
+      </div>
+      <button class="arrow">&gt;</button>
+    </div>
+    <div class="week-container">
+      <!-- Понедельник -->
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-name">Понедельник</div>
+          <div class="day-date">28.04.25</div>
+        </div>
+
+        <div class="section-title">На этот день:</div>
+        <ul>
+          <li>История</li>
+          <li>Информатика</li>
+        </ul>
+
+        <div class="section-title">Задано в этот день:</div>
+        <ul>
+          <li>Биология на пятницу 08.06.25</li>
+          <li>Физика на субботу 03.05.25</li>
+        </ul>
+      </div>
+
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-name">Вторник</div>
+          <div class="day-date">29.04.25</div>
+        </div>
+
+        <div class="section-title">На этот день:</div>
+        <ul>
+          <li>История</li>
+          <li>Информатика</li>
+        </ul>
+
+        <div class="section-title">Задано в этот день:</div>
+        <ul>
+          <li>Биология на пятницу 08.06.25</li>
+          <li>Физика на субботу 03.05.25</li>
+        </ul>
+      </div>
+
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-name">Среда</div>
+          <div class="day-date">30.04.25</div>
+        </div>
+
+        <div class="section-title">На этот день:</div>
+        <ul>
+          <li>История</li>
+          <li>Информатика</li>
+        </ul>
+
+        <div class="section-title">Задано в этот день:</div>
+        <ul>
+          <li>Биология на пятницу 08.06.25</li>
+          <li>Физика на субботу 03.05.25</li>
+        </ul>
+      </div>
+
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-name">Четверг</div>
+          <div class="day-date">01.05.25</div>
+        </div>
+
+        <div class="section-title">На этот день:</div>
+        <ul>
+          <li>История</li>
+          <li>Информатика</li>
+        </ul>
+
+        <div class="section-title">Задано в этот день:</div>
+        <ul>
+          <li>Биология на пятницу 08.06.25</li>
+          <li>Физика на субботу 03.05.25</li>
+        </ul>
+      </div>
+
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-name">Пятница</div>
+          <div class="day-date">02.05.25</div>
+        </div>
+
+        <div class="section-title">На этот день:</div>
+        <ul>
+          <li>История</li>
+          <li>Информатика</li>
+        </ul>
+
+        <div class="section-title">Задано в этот день:</div>
+        <ul>
+          <li>Биология на пятницу 08.06.25</li>
+          <li>Физика на субботу 03.05.25</li>
+        </ul>
+      </div>
+
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-name">Суббота</div>
+          <div class="day-date">03.05.25</div>
+        </div>
+
+        <div class="section-title">На этот день:</div>
+        <ul>
+          <li>История</li>
+          <li>Информатика</li>
+        </ul>
+
+        <div class="section-title">Задано в этот день:</div>
+        <ul>
+          <li>Биология на пятницу 08.06.25</li>
+          <li>Физика на субботу 03.05.25</li>
+        </ul>
+      </div>
+
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-name">Воскресенье</div>
+          <div class="day-date">04.05.25</div>
+        </div>
+
+        <div class="section-title">На этот день:</div>
+        <ul>
+          <li>История</li>
+          <li>Информатика</li>
+        </ul>
+
+        <div class="section-title">Задано в этот день:</div>
+        <ul>
+          <li>Биология на пятницу 08.06.25</li>
+          <li>Физика на субботу 03.05.25</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script>
+    document
+      .querySelectorAll(".head_button, .head_button1")
+      .forEach((link) => {
+        const currentPage = window.location.pathname.split("/").pop();
+        const linkPage = link.getAttribute("href");
 
         if (linkPage === currentPage) {
-            link.classList.add('active');
+          link.classList.add("active");
         }
-    });
-</script>
+      });
+  </script>
+  <script>
+        document
+        .querySelectorAll(".head_button, .head_button1")
+        .forEach((link) => {
+            const currentPage = window.location.pathname.split("/").pop();
+            const linkPage = link.getAttribute("href");
 
+            if (linkPage === currentPage) {
+            link.classList.add("active");
+            }
+        });
+    </script>
 </body>
 
 </html>
