@@ -63,14 +63,16 @@ body {
 
     .head_button.active p,
     .head_button1.active p,
-    .save-button.active p {
+    .save-button.active p,
+    .week-wrapper p {
         font-weight: 600;
         font-family: 'Inter', sans-serif;
     }
 
     .head_button p,
     .head_button1 p,
-    .save-button p {
+    .save-button p,
+    .week-wrapper p {
         font-weight: 400;
         white-space: nowrap;
         overflow: hidden;
@@ -357,7 +359,9 @@ body {
 .head_button.active,
 .head_button1.active, 
 .save-button,
-.button_sign {
+.button_sign, 
+.week-header,
+.name-header {
     position: relative;
     z-index: 1;
     border: 2px solid white; /* Белая основная обводка */
@@ -388,7 +392,9 @@ body {
 .head_button1.active,
 .button1.active,
 .save-button,
-.button_sign {
+.button_sign, 
+.week-header,
+.name-header {
     position: relative;
     z-index: 1;
     border: 2px solid #69A99B; /* Основная обводка */
@@ -712,8 +718,9 @@ p.room {
     padding: 10px 30px 20px;
     box-sizing: border-box;
     width: 100%;
-    min-height: 100vh;
-    margin-left: 100px;
+
+    margin-left: 130px;
+    padding-bottom: 0;
 }
 .header-container {
     display: flex;
@@ -750,16 +757,18 @@ p.room {
 .week-header {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     background-color: rgb(105,168,154);
     border-radius: 24px;
     padding: 8px 16px;
-    margin-top: 350px;
+    margin-top: 250px;
     margin-bottom: 24px;
+    width: 800px;
 }
 .week-header .arrow {
     font-size: 18px;
     font-weight: bold;
-    color: #1F1F1F;
+    color: white;
     background: none;
     border: none;
     cursor: pointer;
@@ -774,32 +783,34 @@ p.room {
 .week-header .week-info .title {
     font-size: 14px;
     font-weight: 600;
-    color: #ffffff;
+    color: white;
 }
 .week-header .week-info .date-range {
     font-size: 12px;
-    color: #ffffff;
+    color: white;
     margin-top: 2px;
 }
 .week-container {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 20px;
-    justify-content: center;
-    width: auto;
-    box-sizing: border-box;
-    margin-top: 20px;
+    flex-wrap: nowrap; /* Запрещаем перенос строк */
+    justify-content: space-between; /* Равномерно распределяем карточки */
+    width: 85%;
 }
+
 .day-card {
+    flex: 1;
+    max-width: 300px; /* Ограничиваем максимальную ширину */
+    min-width: 150px;
+    min-height: 500px;
     background-color: #242424;
-    border-radius: 12px;
+    border-radius: 30px;
     padding: 16px;
-    flex: 0 0 200px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    height: 700px;
 }
 .day-card .day-header {
     margin-bottom: 14px;
@@ -816,7 +827,13 @@ p.room {
 .day-card .section-title {
     font-size: 16px;
     font-weight: 600;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+.day-card .section-title_2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 230px;
     margin-bottom: 8px;
 }
 .day-card ul {
