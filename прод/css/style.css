@@ -361,7 +361,8 @@ body {
 .save-button,
 .button_sign, 
 .week-header,
-.name-header {
+.name-header,
+.profile-btn {
     position: relative;
     z-index: 1;
     border: 2px solid white; /* Белая основная обводка */
@@ -395,7 +396,8 @@ body {
 .save-button,
 .button_sign, 
 .week-header,
-.name-header {
+.name-header,
+.profile-btn {
     position: relative;
     z-index: 1;
     border: 2px solid #69A99B; /* Основная обводка */
