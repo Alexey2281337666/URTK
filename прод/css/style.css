@@ -994,6 +994,7 @@ p.room {
             text-align: left;
             display: inline-block;
             margin-left: 200px;
+            margin-bottom: 50px;
         }
 
         .month-btn {
@@ -1016,6 +1017,7 @@ p.room {
             width: 480px; /* фиксированная большая ширина */
             max-width: 100%;
             margin-left: 415px;
+            margin-bottom: 50px;
         }
 
         .month-btn svg {
@@ -1032,7 +1034,7 @@ p.room {
             width: 480px;
             display: none;
             position: absolute;
-            left: 48.5%;
+            left: 48.9%;
             top: 64px;
             transform: translateX(-50%);
             background: #222;
@@ -1075,7 +1077,7 @@ p.room {
             width: 80%;
             margin: 0 auto;
             margin-left: 375px;
-            margin-top: 90px;
+            margin-top: 60px;
             background: none;
             display: flex;
             flex-direction: column;
