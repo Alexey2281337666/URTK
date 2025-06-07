@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 
-<head>    <link rel="stylesheet" href="../css/style.css">
+<head>
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/style_site.css">
-    <meta charset="utf-8" />    <title>Итоговые оценки</title>
+    <meta charset="utf-8" />
+    <title>Итоговые оценки</title>
     <style>
         body {
             overflow: hidden;
@@ -80,7 +82,8 @@
         </a>
 
     </div>
-    <div class="progress-header">Итоговые оценки</div>    <div class="progress-controls" style="justify-content: flex-start;">
+    
+    <div class="progress-controls" style="justify-content: flex-start;">
         <span class="progress-title">Итоговые<br> оценки</span>
         <button class="month-btn" id="monthBtn">
             <svg viewBox="0 0 24 24">
@@ -90,7 +93,8 @@
             <svg viewBox="0 0 24 24">
                 <polyline points="6 9 12 15 18 9" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-        </button>        <div class="dropdown-progress" id="dropdownProgress">
+        </button>
+        <div class="dropdown-progress" id="dropdownProgress">
             <button class="dropdown-progress-option" id="currentMonthBtn">Текущий месяц</button>
         </div>
         <button class="profile-btn"
@@ -216,22 +220,23 @@
                 </tr>
             </tbody>
         </table>
-    </div>    <script>
+    </div>
+    <script>
         const monthBtn = document.getElementById('monthBtn');
         const dropdown = document.getElementById('dropdownProgress');
         const currentMonthBtn = document.getElementById('currentMonthBtn');
 
-        monthBtn.addEventListener('click', function(e) {
+        monthBtn.addEventListener('click', function (e) {
             e.stopPropagation();
             dropdown.classList.toggle('active');
         });
 
-        currentMonthBtn.addEventListener('click', function() {
+        currentMonthBtn.addEventListener('click', function () {
             window.location.href = 'my-progress.html';
         });
 
         // Закрытие дропдауна при клике вне
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (!dropdown.contains(e.target) && !monthBtn.contains(e.target)) {
                 dropdown.classList.remove('active');
             }
@@ -244,26 +249,27 @@
                 link.classList.add('active');
             }
         });
-    </script>    <script>
+    </script>
+    <script>
         // Заполнение таблицы случайными оценками от 3 до 5
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.progress-table tbody tr').forEach(tr => {
                 // Получаем все ячейки в строке, кроме названия предмета
                 const cells = tr.querySelectorAll('td.empty');
-                
+
                 // Генерируем оценки для 1 и 2 семестра (индексы 0 и 1)
                 const sem1 = Math.floor(Math.random() * 3) + 3;
                 const sem2 = Math.floor(Math.random() * 3) + 3;
-                
+
                 // Вычисляем годовую оценку как среднее (индекс 2)
                 const year = Math.round((sem1 + sem2) / 2);
-                
+
                 // Генерируем оценку за экзамен (индекс 3)
                 const exam = Math.floor(Math.random() * 3) + 3;
-                
+
                 // Вычисляем итоговую оценку как среднее между годовой и экзаменационной (индекс 4)
                 const final = Math.round((year + exam) / 2);
-                
+
                 // Заполняем все оценки
                 const grades = [sem1, sem2, year, exam, final];
                 cells.forEach((cell, index) => {
@@ -275,4 +281,5 @@
         });
     </script>
 </body>
+
 </html>

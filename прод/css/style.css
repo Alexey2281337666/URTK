@@ -985,6 +985,7 @@ p.room {
             margin-bottom: 24px;
             position: relative;
             width: 100%;
+            margin-top: 80px;
         }
         .progress-title {
             color: #fff;
