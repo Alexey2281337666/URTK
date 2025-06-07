@@ -551,20 +551,23 @@ body {
 
 .consult-table {
     width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
-    min-width: 1000px;
-    font-family: Arial, sans-serif;
-    border: 5px solid rgb(0, 0, 0); /* Убираем внешнюю рамку */
-    
+    border: none;
+}
+.consult-table th, .consult-table td {
+    width: 12.5%; /* 8 столбцов: 100/8 = 12.5% */
+    text-align: center;
+    padding: 8px;
+    box-sizing: border-box;
 }
 
 .consult-table thead th {
     position: sticky;
     top: 0;
     background-color: rgb(34, 34, 39);
-    border: 1px solid #ccc;
     padding: 16px;
-    text-align: left;
+    text-align: center;
     z-index: 2;
     color: white;
 }
@@ -582,7 +585,6 @@ body {
 
 .consult-table tbody td {
     padding: 30px 12px;
-    border: 1px solid #ddd;
     white-space: nowrap;
     height: 60px;
 }
