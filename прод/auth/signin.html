@@ -45,16 +45,13 @@
                     </div>
                 </div>
                 <div class="my-schedule_2">
-                <h4
-                    style="
+                    <h4 style="
                     color: white;
                     font-family: 'Inter', sans-serif;
                     margin-left: 3%;
                     ">Ваше расписание
-                </h4>
-                <p  
-                    class="label"
-                    style="
+                    </h4>
+                    <p class="label" style="
                     margin-bottom: 1%;
                     color: white;
                     font-family: 'Inter', sans-serif;
@@ -62,15 +59,10 @@
                     font-size: 13px;
                     margin-top: -1%;
                     ">Тип расписания
-                </p>
-                <button
-                    class="input_combobox"
-                    style="position: relative"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    ;>
-                    <span
-                        style="
+                    </p>
+                    <button class="input_combobox" style="position: relative" aria-haspopup="true" aria-expanded="false"
+                        ;>
+                        <span style="
                         position: relative;
                         text-align: left;
                         top: 0;
@@ -81,34 +73,23 @@
                         display: inline-block;
                         max-width: 100%;
                         ">Студент
-                    </span>
-                    <svg
-                        style="
+                        </span>
+                        <svg style="
                             position: absolute;
                             right: 10px;
                             top: 50%;
                             transform: translateY(-50%);
-                        "
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="m7 15 5 5 5-5"></path>
-                        <path d="m7 9 5-5 5 5"></path>
-                    </svg>
-                </button>
+                        " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m7 15 5 5 5-5"></path>
+                            <path d="m7 9 5-5 5 5"></path>
+                        </svg>
+                    </button>
                     <div id="scheduleTypeDropdown" class="dropdown hidden">
                         <button class="dropdown-option">Студент</button>
                         <button class="dropdown-option">По преподавателю</button>
                     </div>
-                    <p
-                        id="secondLabel"
-                        style="
+                    <p id="secondLabel" style="
                         margin-bottom: 1%;
                         margin-top: 15px;
                         color: white;
@@ -118,171 +99,158 @@
                         ">
                         Группа
                     </p>
-                <button
-                    class="input_combobox"
-                    style="
+                    <button class="input_combobox" style="
                     position: relative;
                     background-color: black;
                     color: white;
                     text-align: left;
                     ">
-                    <span
-                        style="
+                        <span style="
                         position: relative;
                         left: 5px;
                         top: 0;
                         font-family: 'Inter', sans-serif;
-                        "
-                        >Выберите...
-                    </span>
-                    <svg
-                        style="
+                        ">Выберите...
+                        </span>
+                        <svg style="
                             position: absolute;
                             right: 10px;
                             top: 50%;
                             transform: translateY(-50%);
-                        "
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="m7 15 5 5 5-5"></path>
-                        <path d="m7 9 5-5 5 5"></path>
-                    </svg>
-                </button>
-                <div id="groupDropdown" class="dropdown hidden"></div>
-                <button class="button_sign margin_sign" id="registerBtn">Зарегестрироваться</button>
+                        " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m7 15 5 5 5-5"></path>
+                            <path d="m7 9 5-5 5 5"></path>
+                        </svg>
+                    </button>
+                    <div id="groupDropdown" class="dropdown hidden"></div>
+                    <button class="button_sign margin_sign" id="registerBtn">Зарегестрироваться</button>
+                </div>
             </div>
-        </div>
 
         </form>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-        // Элементы первого выпадающего списка
-        const scheduleTypeBtn = document.querySelectorAll(".input_combobox")[0];
-        const scheduleDropdown = document.getElementById(
-        "scheduleTypeDropdown"
-        );
-        const scheduleLabel = scheduleTypeBtn.querySelector("span");
+            // Элементы первого выпадающего списка
+            const scheduleTypeBtn = document.querySelectorAll(".input_combobox")[0];
+            const scheduleDropdown = document.getElementById(
+                "scheduleTypeDropdown"
+            );
+            const scheduleLabel = scheduleTypeBtn.querySelector("span");
 
-        // Элементы второго выпадающего списка
-        const groupBtn = document.querySelectorAll(".input_combobox")[1];
-        const groupDropdown = document.getElementById("groupDropdown");
-        const groupLabel = groupBtn.querySelector("span");
-        const secondLabel = document.getElementById("secondLabel");
+            // Элементы второго выпадающего списка
+            const groupBtn = document.querySelectorAll(".input_combobox")[1];
+            const groupDropdown = document.getElementById("groupDropdown");
+            const groupLabel = groupBtn.querySelector("span");
+            const secondLabel = document.getElementById("secondLabel");
 
-        // Опции для второго выпадающего списка
-        const optionsByType = {
-            Студент: ["ИС-127", "ИС-128", "ИС-129"],
-            "По преподавателю": ["Иванов", "Петров", "Сидоров"]
-        };
+            // Опции для второго выпадающего списка
+            const optionsByType = {
+                Студент: ["ИС-127", "ИС-128", "ИС-129"],
+                "По преподавателю": ["Иванов", "Петров", "Сидоров"]
+            };
 
-        // Текущий тип расписания и текущая опция второго списка
-        let currentType = "Студент";
-        let currentGroupOption = null;
+            // Текущий тип расписания и текущая опция второго списка
+            let currentType = "Студент";
+            let currentGroupOption = null;
 
-        // Функция для обновления второго выпадающего списка
-        function updateGroupOptions(type) {
-        console.log("Обновление второго списка для типа:", type);
-          groupDropdown.innerHTML = ""; // Очищаем старые опции
+            // Функция для обновления второго выпадающего списка
+            function updateGroupOptions(type) {
+                console.log("Обновление второго списка для типа:", type);
+                groupDropdown.innerHTML = ""; // Очищаем старые опции
 
-            optionsByType[type].forEach((optionText) => {
-            const btn = document.createElement("button");
-            btn.className = "dropdown-option";
-            btn.textContent = optionText;
+                optionsByType[type].forEach((optionText) => {
+                    const btn = document.createElement("button");
+                    btn.className = "dropdown-option";
+                    btn.textContent = optionText;
 
-            btn.addEventListener("click", function (e) {
-            e.preventDefault();
-            console.log("Выбрана опция второго списка:", optionText);
-              groupLabel.textContent = optionText; // Обновляем текст
-              currentGroupOption = optionText; // Сохраняем выбранную опцию
-              groupDropdown.classList.add("hidden"); // Закрываем список
-            });
+                    btn.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        console.log("Выбрана опция второго списка:", optionText);
+                        groupLabel.textContent = optionText; // Обновляем текст
+                        currentGroupOption = optionText; // Сохраняем выбранную опцию
+                        groupDropdown.classList.add("hidden"); // Закрываем список
+                    });
 
-            groupDropdown.appendChild(btn);
-            });
+                    groupDropdown.appendChild(btn);
+                });
 
-          // Обновляем метку над вторым списком
-            secondLabel.textContent = {
-                Студент: "Группа",
-                "По преподавателю": "Преподаватель"
-            }[type];
+                // Обновляем метку над вторым списком
+                secondLabel.textContent = {
+                    Студент: "Группа",
+                    "По преподавателю": "Преподаватель"
+                }[type];
 
-          // Восстанавливаем предыдущую опцию, если она существует в новом списке
-            if (
-            currentGroupOption &&
-            optionsByType[type].includes(currentGroupOption)
-            ) {
-            groupLabel.textContent = currentGroupOption;
-            } else {
-            groupLabel.textContent = "Выберите...";
-            currentGroupOption = null; // Сбрасываем, если опция недоступна
+                // Восстанавливаем предыдущую опцию, если она существует в новом списке
+                if (
+                    currentGroupOption &&
+                    optionsByType[type].includes(currentGroupOption)
+                ) {
+                    groupLabel.textContent = currentGroupOption;
+                } else {
+                    groupLabel.textContent = "Выберите...";
+                    currentGroupOption = null; // Сбрасываем, если опция недоступна
+                }
             }
-        }
 
-        // Открытие первого выпадающего списка
-        scheduleTypeBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            console.log("Клик по кнопке типа расписания");
-            scheduleDropdown.classList.toggle("hidden");
-            groupDropdown.classList.add("hidden");
-        });
-
-        // Открытие второго выпадающего списка
-        groupBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            console.log("Клик по кнопке второго списка");
-            groupDropdown.classList.toggle("hidden");
-            scheduleDropdown.classList.add("hidden");
-        });
-
-        // Выбор опции в первом выпадающем списке
-        scheduleDropdown
-            .querySelectorAll(".dropdown-option")
-            .forEach((option) => {
-            option.addEventListener("click", function (e) {
+            // Открытие первого выпадающего списка
+            scheduleTypeBtn.addEventListener("click", function (e) {
                 e.preventDefault();
-                const selectedType = this.textContent;
-                console.log("Выбран тип расписания:", selectedType);
-              scheduleLabel.textContent = selectedType; // Обновляем текст
+                console.log("Клик по кнопке типа расписания");
+                scheduleDropdown.classList.toggle("hidden");
+                groupDropdown.classList.add("hidden");
+            });
+
+            // Открытие второго выпадающего списка
+            groupBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+                console.log("Клик по кнопке второго списка");
+                groupDropdown.classList.toggle("hidden");
                 scheduleDropdown.classList.add("hidden");
-                currentType = selectedType;
-              updateGroupOptions(selectedType); // Обновляем второй список
-            });
             });
 
-        // Закрытие списков при клике вне
-        document.addEventListener("click", function (e) {
-            if (
-            !scheduleTypeBtn.contains(e.target) &&
-            !scheduleDropdown.contains(e.target)
-            ) {
-            scheduleDropdown.classList.add("hidden");
-            }
-            if (
-            !groupBtn.contains(e.target) &&
-            !groupDropdown.contains(e.target)
-            ) {
-            groupDropdown.classList.add("hidden");
-            }
+            // Выбор опции в первом выпадающем списке
+            scheduleDropdown
+                .querySelectorAll(".dropdown-option")
+                .forEach((option) => {
+                    option.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        const selectedType = this.textContent;
+                        console.log("Выбран тип расписания:", selectedType);
+                        scheduleLabel.textContent = selectedType; // Обновляем текст
+                        scheduleDropdown.classList.add("hidden");
+                        currentType = selectedType;
+                        updateGroupOptions(selectedType); // Обновляем второй список
+                    });
+                });
+
+            // Закрытие списков при клике вне
+            document.addEventListener("click", function (e) {
+                if (
+                    !scheduleTypeBtn.contains(e.target) &&
+                    !scheduleDropdown.contains(e.target)
+                ) {
+                    scheduleDropdown.classList.add("hidden");
+                }
+                if (
+                    !groupBtn.contains(e.target) &&
+                    !groupDropdown.contains(e.target)
+                ) {
+                    groupDropdown.classList.add("hidden");
+                }
+            });
+
+            // Инициализация
+            console.log("Инициализация: установка Студент");
+            scheduleLabel.textContent = "Студент";
+            updateGroupOptions(currentType);
         });
-
-        // Инициализация
-        console.log("Инициализация: установка Студент");
-        scheduleLabel.textContent = "Студент";
-        updateGroupOptions(currentType);
-    });
     </script>
     <script src="../js/Users.js"></script>
     <script src="../js/auth.js"></script>
 
-    
+
 
 
 

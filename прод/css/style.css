@@ -1187,4 +1187,9 @@ p.room {
             border-radius: 0 0 28px 0;
         }
 
+.font {
+    font-family: 'Inter', sans-serif;
+    color: white;
+    font-size: 12px;
+}
 
