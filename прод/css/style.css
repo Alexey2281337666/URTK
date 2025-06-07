@@ -965,4 +965,9 @@ p.room {
 .subject-popover--right { transform: translateX(8px); }
 
 
+.font {
+    font-family: 'Inter', sans-serif;
+    color: white;
+    font-size: 12px;
+}
 
