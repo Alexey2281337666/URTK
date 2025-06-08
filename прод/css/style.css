@@ -3,7 +3,6 @@ body {
     height: auto;
     background-color: black;
     overflow-x: hidden;
-    font-family: 'Inter', sans-serif;
 }
 
 @media screen and (min-width: 1025px) {
@@ -628,10 +627,14 @@ body {
     width: 100%;
     max-width: 1920px;
     margin: 0 auto;
-    padding: 3rem 3rem 4rem;
+    padding-right: 24px;
+    padding-left: 24px;
+    padding-bottom: 24px;
+    padding-top: 32px;
+    margin-top: 40px;
     transform: scale(var(--scale));
     transform-origin: top center;
-    margin-left: 15%;
+    margin-left: 375px;
 }
 .schedule-header {
     display: flex;
@@ -985,11 +988,10 @@ p.room {
             margin-bottom: 24px;
             position: relative;
             width: 100%;
-            margin-top: 80px;
         }
         .progress-title {
             color: #fff;
-            font-size: 1.8em;
+            font-size: 2rem;
             font-weight: 500;
             margin-right: 200px;
             min-width: 180px;
