@@ -3,6 +3,7 @@ body {
     height: auto;
     background-color: black;
     overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
 }
 
 @media screen and (min-width: 1025px) {
@@ -987,6 +988,7 @@ p.room {
             align-items: center;
             margin-bottom: 24px;
             position: relative;
+            margin-top: 100px;
             width: 100%;
         }
         .progress-title {
