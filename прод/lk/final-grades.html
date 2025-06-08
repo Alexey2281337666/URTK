@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style_site.css">
+    <meta charset="utf-8" />
+    <title>Итоговые оценки</title>
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head">
+        <div class="logo-title">
+            <img src="../image/лого.png" alt="Логотип" class="logo-img">
+            <div class="logo-text">
+                <span>Расписание</span><br>
+                <span>УРТК</span>
+            </div>
+        </div>
+        <a class="head_button" href="my-schedule.html">
+            <svg style="margin-top: 8px; margin-left: 10px; margin-right: 15px;" xmlns="http://www.w3.org/2000/svg"
+                width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house w-5 h-5">
+                <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
+                <path
+                    d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z">
+                </path>
+            </svg>
+            <p>Главная</p>
+        </a>
+        <a class="head_button1" href="all_rasp.html">
+            <svg style="margin-top: 8px; margin-left: 10px; margin-right: 15px;" xmlns="http://www.w3.org/2000/svg"
+                width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days w-5 h-5">
+                <path d="M8 2v4"></path>
+                <path d="M16 2v4"></path>
+                <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                <path d="M3 10h18"></path>
+                <path d="M8 14h.01"></path>
+                <path d="M12 14h.01"></path>
+                <path d="M16 14h.01"></path>
+                <path d="M8 18h.01"></path>
+                <path d="M12 18h.01"></path>
+                <path d="M16 18h.01"></path>
+            </svg>
+            <p>Все расписания</p>
+        </a>
+        <a class="head_button" href="home-work.html">
+            <svg style="margin-top: 9px; margin-left: 10px; margin-right: 15px;"
+                class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                width="30" height="30" fill="none" viewBox="0 0 24 24">
+                <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 6.03v13m0-13c-2.819-.831-4.715-1.076-8.029-1.023A.99.99 0 0 0 3 6v11c0 .563.466 1.014 1.03 1.007 3.122-.043 5.018.212 7.97 1.023m0-13c2.819-.831 4.715-1.076 8.029-1.023A.99.99 0 0 1 21 6v11c0 .563-.466 1.014-1.03 1.007-3.122-.043-5.018.212-7.97 1.023" />
+            </svg>
+
+            <p>Домашнее задание</p>
+        </a>
+        <a class="head_button active" href="my-progress.html">
+            <svg style="margin-top: 8px; margin-left: 10px; margin-right: 15px;"
+                class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                width="30" height="30" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4" />
+            </svg>
+
+            <p>Успеваемость</p>
+        </a>
+        <div class="spacer"></div>
+        <a class="head_button profile-button" href="profile.html">
+            <svg style="margin-top: 8px; margin-left: 10px; margin-right: 15px;" xmlns="http://www.w3.org/2000/svg"
+                width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user w-5 h-5">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <p>Профиль</p>
+        </a>
+
+    </div>
+    
+    <div class="progress-controls" style="justify-content: flex-start;">
+        <span class="progress-title">Итоговые<br> оценки</span>
+        <button class="month-btn" id="monthBtn">
+            <svg viewBox="0 0 24 24">
+                <polyline points="6 9 12 15 18 9" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Текущий год
+            <svg viewBox="0 0 24 24">
+                <polyline points="6 9 12 15 18 9" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+        <div class="dropdown-progress" id="dropdownProgress">
+            <button class="dropdown-progress-option" id="currentMonthBtn">Текущий месяц</button>
+        </div>
+        <button class="profile-btn"
+            style="position: absolute; margin-left: 2045px; top: calc(50% - 30px); transform: translateY(-50%); color: #fff; border: 2px solid #69A99B; border-radius: 24px; padding: 12px 32px; font-size: 1rem; font-weight: 500; cursor: pointer;">Александр
+            Щукин</button>
+    </div>
+    <div class="progress-table-wrapper">
+        <table class="progress-table">
+            <thead>
+                <tr>
+                    <th class="subject" style="min-width: 120px; width: 120px;">Предмет</th>
+                    <th>1 семестр</th>
+                    <th>2 семестр</th>
+                    <th>Год</th>
+                    <th>Экзамен</th>
+                    <th>Итог</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="subject">Математика</td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                </tr>
+                <tr>
+                    <td class="subject">Русский язык</td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                </tr>
+                <tr>
+                    <td class="subject">Литература</td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                </tr>
+                <tr>
+                    <td class="subject">История</td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                </tr>
+                <tr>
+                    <td class="subject">Обществознание</td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                </tr>
+                <tr>
+                    <td class="subject">Иностранный язык</td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                </tr>
+                <tr>
+                    <td class="subject">Информатика</td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                </tr>
+                <tr>
+                    <td class="subject">Биология</td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                </tr>
+                <tr>
+                    <td class="subject">География</td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                </tr>
+                <tr>
+                    <td class="subject">Физика</td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                </tr>
+                <tr>
+                    <td class="subject">Химия</td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                </tr>
+                <tr>
+                    <td class="subject">Физ-ра</td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                </tr>
+                <tr>
+                    <td class="subject">ОБЖ</td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                    <td class="empty"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        const monthBtn = document.getElementById('monthBtn');
+        const dropdown = document.getElementById('dropdownProgress');
+        const currentMonthBtn = document.getElementById('currentMonthBtn');
+
+        monthBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            dropdown.classList.toggle('active');
+        });
+
+        currentMonthBtn.addEventListener('click', function () {
+            window.location.href = 'my-progress.html';
+        });
+
+        // Закрытие дропдауна при клике вне
+        document.addEventListener('click', function (e) {
+            if (!dropdown.contains(e.target) && !monthBtn.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });        // Подсветка активной страницы в навигации
+        document.querySelectorAll('.head_button, .head_button1').forEach(link => {
+            const currentPage = window.location.pathname.split('/').pop();
+            const linkPage = link.getAttribute('href');
+
+            if (linkPage === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+    <script>
+        // Заполнение таблицы случайными оценками от 3 до 5
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.progress-table tbody tr').forEach(tr => {
+                // Получаем все ячейки в строке, кроме названия предмета
+                const cells = tr.querySelectorAll('td.empty');
+
+                // Генерируем оценки для 1 и 2 семестра (индексы 0 и 1)
+                const sem1 = Math.floor(Math.random() * 3) + 3;
+                const sem2 = Math.floor(Math.random() * 3) + 3;
+
+                // Вычисляем годовую оценку как среднее (индекс 2)
+                const year = Math.round((sem1 + sem2) / 2);
+
+                // Генерируем оценку за экзамен (индекс 3)
+                const exam = Math.floor(Math.random() * 3) + 3;
+
+                // Вычисляем итоговую оценку как среднее между годовой и экзаменационной (индекс 4)
+                const final = Math.round((year + exam) / 2);
+
+                // Заполняем все оценки
+                const grades = [sem1, sem2, year, exam, final];
+                cells.forEach((cell, index) => {
+                    cell.textContent = grades[index];
+                    cell.classList.remove('empty');
+                    cell.classList.add('grade');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

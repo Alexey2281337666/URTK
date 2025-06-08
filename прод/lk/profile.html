@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../css/style.css" />
         <meta charset="utf-8" />
         <title>Профиль</title>
@@ -266,7 +269,7 @@
             </button>
             <div id="groupDropdown" class="dropdown hidden"></div>
         </div>
-        <button class="button1 active" style="width: 40%;">Сохранить</button>
+        <button class="button1 active" style="width: 40%;"id="saveButton" >Сохранить</button>
         </form>
         <a
         href="/auth/signin.html"
@@ -436,5 +439,40 @@
         updateGroupOptions(currentType);
     });
     </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const saveButton = document.getElementById("saveButton");
+    const groupLabel = document.querySelectorAll(".input_combobox span")[1];
+
+    saveButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Останавливаем стандартное поведение кнопки
+        
+        const selectedType = document.querySelector(".input_combobox span").textContent;
+        const selectedGroup = groupLabel.textContent.trim(); // Получаем текст группы и удаляем лишние пробелы
+
+        if (!selectedGroup || selectedGroup === "Выберите...") {
+            alert("Выберите корректную группу перед сохранением!");
+            return; // Прерываем выполнение, если группа не выбрана
+        }
+
+        if (selectedType === "Студент") {
+            const groupPages = {
+                "ИС-127": "my-schedule.html",
+                "ИС-128": "my-schedule_is-128.html",
+                "ИС-129": "my-schedule_is-129.html"
+            };
+
+            if (groupPages[selectedGroup]) {
+                window.location.href = groupPages[selectedGroup];
+            } else {
+                alert("Выберите корректную группу!");
+            }
+        } else {
+            alert("Для выбора расписания нужна категория 'Студент'.");
+        }
+    });
+});
+
+</script>
     </body>
 </html>

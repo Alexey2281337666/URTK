@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css" />
+    <meta charset="utf-8" />
+    <title>Мое расписание</title>
+  </head>
+
+  <body>
+    <div class="head">
+      <div class="logo-title">
+        <img src="../image/лого.png" alt="Логотип" class="logo-img" />
+        <div class="logo-text">
+          <span>Расписание</span><br />
+          <span>УРТК</span>
+        </div>
+      </div>
+      <a class="head_button" href="my-schedule.html">
+        <svg
+          style="margin-top: 8px; margin-left: 10px; margin-right: 15px"
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-house w-5 h-5">
+          <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
+          <path
+            d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+        <p>Главная</p>
+      </a>
+      <a class="head_button1" href="all_rasp.html">
+        <svg
+          style="margin-top: 8px; margin-left: 10px; margin-right: 15px"
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-calendar-days w-5 h-5">
+          <path d="M8 2v4"></path>
+          <path d="M16 2v4"></path>
+          <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+          <path d="M3 10h18"></path>
+          <path d="M8 14h.01"></path>
+          <path d="M12 14h.01"></path>
+          <path d="M16 14h.01"></path>
+          <path d="M8 18h.01"></path>
+          <path d="M12 18h.01"></path>
+          <path d="M16 18h.01"></path>
+        </svg>
+        <p>Все расписания</p>
+      </a>
+      <a class="head_button" href="home-work.html">
+        <svg
+          style="margin-top: 9px; margin-left: 10px; margin-right: 15px"
+          class="w-6 h-6 text-gray-800 dark:text-white"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="none"
+          viewBox="0 0 24 24">
+          <path
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 6.03v13m0-13c-2.819-.831-4.715-1.076-8.029-1.023A.99.99 0 0 0 3 6v11c0 .563.466 1.014 1.03 1.007 3.122-.043 5.018.212 7.97 1.023m0-13c2.819-.831 4.715-1.076 8.029-1.023A.99.99 0 0 1 21 6v11c0 .563-.466 1.014-1.03 1.007-3.122-.043-5.018.212-7.97 1.023" />
+        </svg>
+
+        <p>Домашнее задание</p>
+      </a>
+      <a class="head_button" href="my-progress.html">
+        <svg
+          style="margin-top: 8px; margin-left: 10px; margin-right: 15px"
+          class="w-6 h-6 text-gray-800 dark:text-white"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="none"
+          viewBox="0 0 24 24">
+          <path
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4" />
+        </svg>
+
+        <p>Успеваемость</p>
+      </a>
+      <div class="spacer"></div>
+      <a class="head_button profile-button" href="profile.html">
+        <svg
+          style="margin-top: 8px; margin-left: 10px; margin-right: 15px"
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-user w-5 h-5">
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <p>Профиль</p>
+      </a>
+    </div>
+    <script>
+      document
+        .querySelectorAll(".head_button, .head_button1")
+        .forEach((link) => {
+          const currentPage = window.location.pathname.split("/").pop();
+          const linkPage = link.getAttribute("href");
+
+          if (linkPage === currentPage) {
+            link.classList.add("active");
+          }
+        });
+    </script>
+    <div class="schedule-container">
+      <div class="schedule-header">
+        <div class="title">Расписание: ИС-128</div>
+        <div class="nav">
+          <a href="#" class="nav-arrow">‹</a>
+          <span class="week-range">28 апреля – 4 мая 2025</span>
+          <a href="#" class="nav-arrow">›</a>
+        </div>
+      </div>
+
+      <div class="schedule-wrapper">
+        <div class="schedule">
+          <div class="cell header index">№</div>
+          <div class="cell header">
+            Понедельник<br />
+            <p class="date">28.04.25</p>
+          </div>
+          <div class="cell header">
+            Вторник<br />
+            <p class="date">29.04.25</p>
+          </div>
+          <div class="cell header">
+            Среда<br />
+            <p class="date">30.04.25</p>
+          </div>
+          <div class="cell header">
+            Четверг<br />
+            <p class="date">01.05.25</p>
+          </div>
+          <div class="cell header">
+            Пятница<br />
+            <p class="date">02.05.25</p>
+          </div>
+          <div class="cell header">
+            Суббота<br />
+            <p class="date">03.05.25</p>
+          </div>
+
+          <div class="cell index">1</div>
+          <div class="cell">
+            Математика<br />
+            <p class="time">08:30 – 10:00</p>
+            <br />
+            <p class="room">356, Додонов Ю.С.</p>
+          </div>
+          <div class="cell empty">нет пары</div>
+          <div class="cell empty">нет пары</div>
+          <div class="cell">
+            Физика <br/>
+            <p class="time">08:30 – 10:00</p>
+            <br />
+            <p class="room">254, Сердюк В.В.</p>
+          </div>
+          <div class="cell empty">нет пары</div>
+          <div class="cell">
+            Литература<br />
+            <p class="time">08:30 – 10:00</p>
+            <br />
+            <p class="room">365, Мандрыгина С.С.</p>
+          </div>
+          <div class="cell index">2</div>
+          <div class="cell">
+            Физическая культура<br />
+            <p class="time">10:10 – 11:40</p>
+            <br />
+            <p class="room">Спортзал, Оберюхтина М.В.</p>
+          </div>
+          <div class="cell">
+            История<br />
+            <p class="time">10:10 – 11:40</p>
+            <br />
+            <p class="room">259, Фурс Т.В.</p>
+          </div>
+          <div class="cell">
+            История<br />
+            <p class="time">10:10 – 11:40</p>
+            <br />
+            <p class="room">259, Фурс Т.В.</p>
+          </div>
+          <div class="cell">
+            Биология<br />
+            <p class="time">10:10 – 11:40</p>
+            <br />
+            <p class="room">265, Кишова Н.Ю.</p>
+          </div>
+          <div class="cell empty">нет пары</div>
+          <div class="cell">
+            Русский язык<br />
+            <p class="time">10:10 – 11:40</p>
+            <br />
+            <p class="room">365, Мандрыгина С.С.</p>
+          </div>
+          <div class="cell index">3</div>
+          <div class="cell">
+            Классный час "Разговоры о важном"<br />
+            <p class="time">12:10 – 13:40</p>
+            <br />
+            <p class="room">262, Андреева О.В.</p>
+          </div>
+          <div class="cell">
+            Информатика<br />
+            <p class="time">12:10 – 13:40</p>
+            <br />
+            <p class="room">101, Филимонов В.И.</p>
+          </div>
+          <div class="cell">
+            Математика<br />
+            <p class="time">12:10 – 13:40</p>
+            <br />
+            <p class="room">356, Додонов Ю.С.</p>
+          </div>
+          <div class="cell">
+            География<br />
+            <p class="time">12:10 – 13:40</p>
+            <br />
+            <p class="room">451, Тимошинова Л.П.</p>
+          </div>
+          <div class="cell">
+            Обществознание<br />
+            <p class="time">12:10 – 13:40</p>
+            <br />
+            <p class="room">457, Биц Н.А.</p>
+          </div>
+          <div class="cell empty">нет пары</div>
+          <div class="cell index">4</div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell">
+            Математика<br />
+            <p class="time">14:10 – 15:40</p>
+            <br />
+            <p class="room">356, Додонов Ю.С.</p>
+          </div>
+          <div class="cell">
+            Литература<br />
+            <p class="time">14:10 – 15:40</p>
+            <br />
+            <p class="room">365, Мандрыгина С.С.</p>
+          </div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell">
+            Основы безопасности жизнедеятельности<br />
+            <p class="time">14:10 – 15:40</p>
+            <br />
+            <p class="room">266, Павлов Ю.Н.</p>
+          </div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell index">5</div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell">
+            География<br />
+            <p class="time">16:00 – 17:30</p>
+            <br />
+            <p class="room">451, Тимошинова Л.П.</p>
+          </div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell index">6</div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell index">7</div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell empty">Нет пары</div>
+          <div class="cell empty">Нет пары</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
