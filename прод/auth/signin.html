@@ -14,6 +14,49 @@
             border: 2px solid red !important;
             outline: none;
         }
+
+        /* Подсветка выбранной опции */
+        .dropdown-option.selected {
+            background: #69A99B;
+            color: #fff;
+        }
+
+        /* Анимация открытия/закрытия выпадающего списка */
+        .dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(.4, 0, .2, 1), opacity 0.3s;
+            opacity: 0;
+        }
+
+        .dropdown:not(.hidden) {
+            max-height: 300px;
+            opacity: 1;
+            box-shadow: 0 4px 16px 0 rgba(34, 139, 126, 0.10);
+        }
+
+        .input-sign-password-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .toggle-password svg {
+            width: 22px;
+            height: 22px;
+            fill: #69A99B;
+        }
     </style>
 </head>
 
@@ -39,11 +82,31 @@
                     <div class="row">
                         <div class="margin">
                             <label class="font" style="display: block;">Пароль</label>
-                            <input class="input_sign" name="password" placeholder="Ваш пароль">
+                            <div class="input-sign-password-wrapper">
+                                <input class="input_sign" name="password" type="password" placeholder="Ваш пароль"
+                                    id="passwordInput">
+                                <button type="button" class="toggle-password" tabindex="-1" aria-label="Показать/скрыть пароль"
+                                    data-target="passwordInput">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12zm11 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                        <path d="M23 1 1 23" />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                         <div class="margin">
                             <label class="font" style="display: block;">Повторите пароль</label>
-                            <input class="input_sign" name="confirmPassword" placeholder="Ваш пароль">
+                            <div class="input-sign-password-wrapper">
+                                <input class="input_sign" name="confirmPassword" type="password" placeholder="Ваш пароль"
+                                    id="confirmPasswordInput">
+                                <button type="button" class="toggle-password" tabindex="-1" aria-label="Показать/скрыть пароль"
+                                    data-target="confirmPasswordInput">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12zm11 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                        <path d="M23 1 1 23" />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -134,122 +197,163 @@
         </form>
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Элементы первого выпадающего списка
-            const scheduleTypeBtn = document.querySelectorAll(".input_combobox")[0];
-            const scheduleDropdown = document.getElementById(
-                "scheduleTypeDropdown"
-            );
-            const scheduleLabel = scheduleTypeBtn.querySelector("span");
+    document.addEventListener("DOMContentLoaded", function () {
+        // Элементы первого выпадающего списка
+        const scheduleTypeBtn = document.querySelectorAll(".input_combobox")[0];
+        const scheduleDropdown = document.getElementById("scheduleTypeDropdown");
+        const scheduleLabel = scheduleTypeBtn.querySelector("span");
 
-            // Элементы второго выпадающего списка
-            const groupBtn = document.querySelectorAll(".input_combobox")[1];
-            const groupDropdown = document.getElementById("groupDropdown");
-            const groupLabel = groupBtn.querySelector("span");
-            const secondLabel = document.getElementById("secondLabel");
+        // Элементы второго выпадающего списка
+        const groupBtn = document.querySelectorAll(".input_combobox")[1];
+        const groupDropdown = document.getElementById("groupDropdown");
+        const groupLabel = groupBtn.querySelector("span");
+        const secondLabel = document.getElementById("secondLabel");
 
-            // Опции для второго выпадающего списка
-            const optionsByType = {
-                Студент: ["ИС-127", "ИС-128", "ИС-129"],
-                "По преподавателю": ["Иванов", "Петров", "Сидоров"]
-            };
+        // Опции для второго выпадающего списка
+        const optionsByType = {
+            Студент: ["ИС-127", "ИС-128", "ИС-129"],
+            "По преподавателю": ["Иванов", "Петров", "Сидоров"]
+        };
 
-            // Текущий тип расписания и текущая опция второго списка
-            let currentType = "Студент";
-            let currentGroupOption = null;
+        // Текущий тип расписания и текущая опция второго списка
+        let currentType = "Студент";
+        let currentGroupOption = null;
 
-            // Функция для обновления второго выпадающего списка
-            function updateGroupOptions(type) {
-                console.log("Обновление второго списка для типа:", type);
-                groupDropdown.innerHTML = ""; // Очищаем старые опции
+        // Функция для обновления второго выпадающего списка
+        function updateGroupOptions(type) {
+            groupDropdown.innerHTML = ""; // Очищаем старые опции
 
-                optionsByType[type].forEach((optionText) => {
-                    const btn = document.createElement("button");
-                    btn.className = "dropdown-option";
-                    btn.textContent = optionText;
+            optionsByType[type].forEach((optionText) => {
+                const btn = document.createElement("button");
+                btn.className = "dropdown-option";
+                btn.textContent = optionText;
 
-                    btn.addEventListener("click", function (e) {
-                        e.preventDefault();
-                        console.log("Выбрана опция второго списка:", optionText);
-                        groupLabel.textContent = optionText; // Обновляем текст
-                        currentGroupOption = optionText; // Сохраняем выбранную опцию
-                        groupDropdown.classList.add("hidden"); // Закрываем список
-                    });
-
-                    groupDropdown.appendChild(btn);
+                btn.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    groupLabel.textContent = optionText; // Обновляем текст
+                    currentGroupOption = optionText; // Сохраняем выбранную опцию
+                    groupDropdown.classList.add("hidden"); // Закрываем список
                 });
 
-                // Обновляем метку над вторым списком
-                secondLabel.textContent = {
-                    Студент: "Группа",
-                    "По преподавателю": "Преподаватель"
-                }[type];
+                groupDropdown.appendChild(btn);
+            });
 
-                // Восстанавливаем предыдущую опцию, если она существует в новом списке
-                if (
-                    currentGroupOption &&
-                    optionsByType[type].includes(currentGroupOption)
-                ) {
-                    groupLabel.textContent = currentGroupOption;
-                } else {
-                    groupLabel.textContent = "Выберите...";
-                    currentGroupOption = null; // Сбрасываем, если опция недоступна
-                }
+            // Обновляем метку над вторым списком
+            secondLabel.textContent = {
+                Студент: "Группа",
+                "По преподавателю": "Преподаватель"
+            }[type];
+
+            // Восстанавливаем предыдущую опцию, если она существует в новом списке
+            if (
+                currentGroupOption &&
+                optionsByType[type].includes(currentGroupOption)
+            ) {
+                groupLabel.textContent = currentGroupOption;
+            } else {
+                groupLabel.textContent = "Выберите...";
+                currentGroupOption = null; // Сбрасываем, если опция недоступна
             }
+        }
 
-            // Открытие первого выпадающего списка
-            scheduleTypeBtn.addEventListener("click", function (e) {
-                e.preventDefault();
-                console.log("Клик по кнопке типа расписания");
-                scheduleDropdown.classList.toggle("hidden");
-                groupDropdown.classList.add("hidden");
-            });
-
-            // Открытие второго выпадающего списка
-            groupBtn.addEventListener("click", function (e) {
-                e.preventDefault();
-                console.log("Клик по кнопке второго списка");
-                groupDropdown.classList.toggle("hidden");
-                scheduleDropdown.classList.add("hidden");
-            });
-
-            // Выбор опции в первом выпадающем списке
-            scheduleDropdown
-                .querySelectorAll(".dropdown-option")
-                .forEach((option) => {
-                    option.addEventListener("click", function (e) {
-                        e.preventDefault();
-                        const selectedType = this.textContent;
-                        console.log("Выбран тип расписания:", selectedType);
-                        scheduleLabel.textContent = selectedType; // Обновляем текст
-                        scheduleDropdown.classList.add("hidden");
-                        currentType = selectedType;
-                        updateGroupOptions(selectedType); // Обновляем второй список
-                    });
-                });
-
-            // Закрытие списков при клике вне
-            document.addEventListener("click", function (e) {
-                if (
-                    !scheduleTypeBtn.contains(e.target) &&
-                    !scheduleDropdown.contains(e.target)
-                ) {
-                    scheduleDropdown.classList.add("hidden");
-                }
-                if (
-                    !groupBtn.contains(e.target) &&
-                    !groupDropdown.contains(e.target)
-                ) {
-                    groupDropdown.classList.add("hidden");
-                }
-            });
-
-            // Инициализация
-            console.log("Инициализация: установка Студент");
-            scheduleLabel.textContent = "Студент";
-            updateGroupOptions(currentType);
+        // Открытие первого выпадающего списка
+        scheduleTypeBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            scheduleDropdown.classList.toggle("hidden");
+            groupDropdown.classList.add("hidden");
         });
-    </script>
+
+        // Открытие второго выпадающего списка
+        groupBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            groupDropdown.classList.toggle("hidden");
+            scheduleDropdown.classList.add("hidden");
+        });
+
+        // Выбор опции в первом выпадающем списке
+        scheduleDropdown
+            .querySelectorAll(".dropdown-option")
+            .forEach((option) => {
+                option.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const selectedType = this.textContent;
+                    scheduleLabel.textContent = selectedType; // Обновляем текст
+                    scheduleDropdown.classList.add("hidden");
+                    currentType = selectedType;
+                    updateGroupOptions(selectedType); // Обновляем второй список
+                });
+            });
+
+        // Закрытие списков при клике вне
+        document.addEventListener("click", function (e) {
+            if (
+                !scheduleTypeBtn.contains(e.target) &&
+                !scheduleDropdown.contains(e.target)
+            ) {
+                scheduleDropdown.classList.add("hidden");
+            }
+            if (
+                !groupBtn.contains(e.target) &&
+                !groupDropdown.contains(e.target)
+            ) {
+                groupDropdown.classList.add("hidden");
+            }
+        });
+
+        // Инициализация
+        scheduleLabel.textContent = "Студент";
+        updateGroupOptions(currentType);
+
+        // --- Переход по кнопке "Зарегестрироваться" ---
+        const registerBtn = document.getElementById("registerBtn");
+        registerBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            const group = groupLabel.textContent.trim();
+            const type = scheduleLabel.textContent.trim();
+
+            if (type === "Студент") {
+                if (group === "ИС-127") {
+                    window.location.href = "../lk/my-schedule.html";
+                } else if (group === "ИС-128") {
+                    window.location.href = "../lk/my-schedule_is-128.html";
+                } else if (group === "ИС-129") {
+                    window.location.href = "../lk/my-schedule_is-129.html";
+                } else {
+                    alert("Пожалуйста, выберите группу!");
+                }
+            } else {
+                alert("Для выбранного типа расписания переход не реализован.");
+            }
+        });
+    });
+</script>
+<script>
+const eyeOpen = `<svg viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12zm11 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>`;
+const eyeClosed = `<svg viewBox="0 0 24 24"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 19C5 19 1 12 1 12a21.8 21.8 0 0 1 5.06-7.94"/><path d="M22.54 12.88A10.94 10.94 0 0 0 23 12s-4-7-11-7a10.94 10.94 0 0 0-4.06.76"/><line x1="1" y1="1" x2="23" y2="23"/><path d="M9.53 9.53A3 3 0 0 0 12 15a3 3 0 0 0 2.47-5.47"/></svg>`;
+
+let passwordsVisible = false;
+
+function setPasswordVisibility(visible) {
+    const passwordInputs = [
+        document.getElementById('passwordInput'),
+        document.getElementById('confirmPasswordInput')
+    ];
+    document.querySelectorAll('.toggle-password').forEach(btn => {
+        btn.innerHTML = visible ? eyeOpen : eyeClosed;
+    });
+    passwordInputs.forEach(input => {
+        if (input) input.type = visible ? "text" : "password";
+    });
+}
+
+document.querySelectorAll('.toggle-password').forEach(btn => {
+    btn.innerHTML = eyeClosed;
+    btn.addEventListener('click', function () {
+        passwordsVisible = !passwordsVisible;
+        setPasswordVisibility(passwordsVisible);
+    });
+});
+</script>
     <script src="../js/Users.js"></script>
     <script src="../js/auth.js"></script>
 
