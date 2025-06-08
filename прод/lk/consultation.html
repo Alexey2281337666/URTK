@@ -85,6 +85,20 @@
             <p>Профиль</p>
         </a>
     </div>
+    <div style="margin: 32px 0 16px 310px; display: flex; justify-content: flex-start;">
+    <input
+        type="text"
+        id="searchTeacher"
+        placeholder="Поиск по ФИО преподавателя"
+        style="padding: 8px 16px; border-radius: 20px; border: 1px solid #69A99B; font-size: 1rem; width: 320px; margin-right: 12px;"
+    >
+    <button
+        id="resetBtn"
+        style="padding: 8px 20px; border-radius: 20px; background: #393939; color: #fff; border: none; font-size: 1rem; cursor: pointer; margin-right: 8px;"
+    >
+        Сбросить
+    </button>
+</div>
     <div class="consult-table-wrapper">
         <table class="consult-table">
             <thead>
@@ -271,6 +285,37 @@
             });
         }
     </script>
+    <script>
+function filterTeachers() {
+    const value = document.getElementById('searchTeacher').value.trim().toLowerCase();
+    document.querySelectorAll('.consult-table tbody tr').forEach(row => {
+        const fio = row.querySelector('td.font')?.textContent.trim().toLowerCase() || '';
+        // Показываем только если ФИО начинается с введённого текста
+        if (fio.startsWith(value) || value === '') {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+
+document.getElementById('searchTeacher').addEventListener('input', filterTeachers);
+
+document.getElementById('searchBtn').addEventListener('click', filterTeachers);
+
+document.getElementById('searchTeacher').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        filterTeachers();
+    }
+});
+
+document.getElementById('resetBtn').addEventListener('click', function () {
+    document.getElementById('searchTeacher').value = '';
+    document.querySelectorAll('.consult-table tbody tr').forEach(row => {
+        row.style.display = '';
+    });
+});
+</script>
 
 </body>
 

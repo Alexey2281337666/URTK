@@ -94,7 +94,7 @@
                 <polyline points="6 9 12 15 18 9" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         </button>
-        <div class="dropdown-progress" id="dropdownProgress">
+        <div class="dropdownprogress_2" id="dropdownProgress_2">
             <button class="dropdown-progress-option" id="currentMonthBtn">Текущий месяц</button>
         </div>
         <button class="profile-btn"
@@ -222,64 +222,113 @@
         </table>
     </div>
     <script>
-        const monthBtn = document.getElementById('monthBtn');
-        const dropdown = document.getElementById('dropdownProgress');
-        const currentMonthBtn = document.getElementById('currentMonthBtn');
+    const monthBtn = document.getElementById('monthBtn');
+    const dropdown = document.getElementById('dropdownProgress');
+    const dropdown2 = document.getElementById('dropdownProgress_2');
+    const currentMonthBtn = document.getElementById('currentMonthBtn');
 
-        monthBtn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            dropdown.classList.toggle('active');
-        });
+    function toggleDropdown(e) {
+        e.stopPropagation();
+        if (dropdown) dropdown.classList.toggle('active');
+        if (dropdown2) dropdown2.classList.toggle('active');
+    }
 
+    if (monthBtn) monthBtn.addEventListener('click', toggleDropdown);
+    if (dropdown2) dropdown2.addEventListener('click', toggleDropdown);
+
+    if (currentMonthBtn) {
         currentMonthBtn.addEventListener('click', function () {
             window.location.href = 'my-progress.html';
         });
+    }
 
-        // Закрытие дропдауна при клике вне
-        document.addEventListener('click', function (e) {
-            if (!dropdown.contains(e.target) && !monthBtn.contains(e.target)) {
-                dropdown.classList.remove('active');
-            }
-        });        // Подсветка активной страницы в навигации
-        document.querySelectorAll('.head_button, .head_button1').forEach(link => {
-            const currentPage = window.location.pathname.split('/').pop();
-            const linkPage = link.getAttribute('href');
+    // Закрытие дропдауна при клике вне dropdownprogress_2
+    document.addEventListener('click', function (e) {
+        if (dropdown2 && !dropdown2.contains(e.target)) {
+            dropdown2.classList.remove('active');
+        }
+        if (dropdown && !dropdown.contains(e.target) && (!monthBtn || !monthBtn.contains(e.target))) {
+            dropdown.classList.remove('active');
+        }
+    });
 
-            if (linkPage === currentPage) {
-                link.classList.add('active');
-            }
-        });
-    </script>
+    // Подсветка активной страницы в навигации
+    document.querySelectorAll('.head_button, .head_button1').forEach(link => {
+        const currentPage = window.location.pathname.split('/').pop();
+        const linkPage = link.getAttribute('href');
+
+        if (linkPage === currentPage) {
+            link.classList.add('active');
+        }
+    });
+</script>
     <script>
-        // Заполнение таблицы случайными оценками от 3 до 5
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('.progress-table tbody tr').forEach(tr => {
-                // Получаем все ячейки в строке, кроме названия предмета
-                const cells = tr.querySelectorAll('td.empty');
+    // Заполнение таблицы случайными оценками от 3 до 5 с учетом вероятностей и невозможных комбинаций
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.progress-table tbody tr').forEach(tr => {
+            const cells = tr.querySelectorAll('td.empty');
 
-                // Генерируем оценки для 1 и 2 семестра (индексы 0 и 1)
-                const sem1 = Math.floor(Math.random() * 3) + 3;
-                const sem2 = Math.floor(Math.random() * 3) + 3;
+            // Вероятности: 3 — 40%, 4 — 40%, 5 — 20%
+            function getRandomGrade() {
+                const rand = Math.random();
+                if (rand < 0.4) return 3;
+                if (rand < 0.8) return 4;
+                return 5;
+            }
 
-                // Вычисляем годовую оценку как среднее (индекс 2)
-                const year = Math.round((sem1 + sem2) / 2);
+            // Генерируем оценки для 1 и 2 семестра
+            let sem1 = getRandomGrade();
+            let sem2 = getRandomGrade();
 
-                // Генерируем оценку за экзамен (индекс 3)
-                const exam = Math.floor(Math.random() * 3) + 3;
+            // Годовая: если оба семестра "3", годовая не может быть "5"
+            let year = Math.round((sem1 + sem2) / 2);
+            if (sem1 === 3 && sem2 === 3) year = 3;
+            if ((sem1 === 3 && sem2 === 4) || (sem1 === 4 && sem2 === 3)) year = 4; // округление всегда в пользу 4
 
-                // Вычисляем итоговую оценку как среднее между годовой и экзаменационной (индекс 4)
-                const final = Math.round((year + exam) / 2);
+            // Экзамен
+            let exam = getRandomGrade();
 
-                // Заполняем все оценки
-                const grades = [sem1, sem2, year, exam, final];
-                cells.forEach((cell, index) => {
-                    cell.textContent = grades[index];
-                    cell.classList.remove('empty');
-                    cell.classList.add('grade');
-                });
+            // Итоговая: если годовая и экзамен оба "3", итоговая не может быть "5"
+            let final = Math.round((year + exam) / 2);
+            if (year === 3 && exam === 3) final = 3;
+            if ((year === 3 && exam === 4) || (year === 4 && exam === 3)) final = 4;
+
+            const grades = [sem1, sem2, year, exam, final];
+            cells.forEach((cell, index) => {
+                cell.textContent = grades[index];
+                cell.classList.remove('empty');
+                cell.classList.add('grade', 'grade-anim');
+                // Подсветка по оценке
+                if (grades[index] === 5) {
+                    cell.style.background = 'rgba(76, 175, 80, 0.25)';
+                } else if (grades[index] === 4) {
+                    cell.style.background = 'rgba(255, 235, 59, 0.25)';
+                } else if (grades[index] === 3) {
+                    cell.style.background = 'rgba(244, 67, 54, 0.25)';
+                } else {
+                    cell.style.background = '';
+                }
+                // Анимация появления
+                cell.style.animation = 'fadeInGrade 0.7s';
+                setTimeout(() => {
+                    cell.style.animation = '';
+                }, 700);
             });
         });
-    </script>
+    });
+</script>
+
+<style>
+/* filepath: d:\URTK x Академикс\URTK\прод\css\style.css */
+/* Анимация появления оценки */
+@keyframes fadeInGrade {
+    from { opacity: 0; transform: scale(0.7);}
+    to { opacity: 1; transform: scale(1);}
+}
+.grade-anim {
+    animation: fadeInGrade 0.7s;
+}
+</style>
 </body>
 
 </html>
