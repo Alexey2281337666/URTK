@@ -1018,7 +1018,7 @@ p.room {
             justify-content: center;
             width: 480px; /* фиксированная большая ширина */
             max-width: 100%;
-            margin-left: 415px;
+            margin-left: 20%;
             margin-bottom: 50px;
         }
 
@@ -1036,7 +1036,7 @@ p.room {
             width: 480px;
             display: none;
             position: absolute;
-            left: 48.5%;
+            left: 47%;
             top: 64px;
             transform: translateX(-50%);
             background: #222;
