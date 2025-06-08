@@ -307,7 +307,49 @@
         // --- Переход по кнопке "Зарегестрироваться" ---
         const registerBtn = document.getElementById("registerBtn");
         registerBtn.addEventListener("click", function (e) {
-            e.preventDefault();
+            e.preventDefault(); // <--- ВАЖНО! Останавливаем переход по умолчанию
+
+            // Валидация
+            const emailInput = document.querySelector('input[name="email"]');
+            const passwordInput = document.getElementById('passwordInput');
+            const confirmPasswordInput = document.getElementById('confirmPasswordInput');
+            const groupLabel = document.querySelectorAll(".input_combobox")[1].querySelector("span");
+            const scheduleLabel = document.querySelectorAll(".input_combobox")[0].querySelector("span");
+
+            let valid = true;
+
+            // Сброс ошибок
+            emailInput.classList.remove('input-error');
+            passwordInput.classList.remove('input-error');
+            confirmPasswordInput.classList.remove('input-error');
+
+            // Проверка email
+            const email = emailInput.value.trim();
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                emailInput.classList.add('input-error');
+                valid = false;
+            }
+
+            // Проверка совпадения паролей
+            if (passwordInput.value !== confirmPasswordInput.value || !passwordInput.value) {
+                passwordInput.classList.add('input-error');
+                confirmPasswordInput.classList.add('input-error');
+                valid = false;
+            }
+
+            if (!valid) {
+                if (!emailPattern.test(email)) {
+                    alert('Пожалуйста, введите корректный email!');
+                    emailInput.focus();
+                } else if (passwordInput.value !== confirmPasswordInput.value || !passwordInput.value) {
+                    alert('Пароли не совпадают или не заполнены!');
+                    passwordInput.focus();
+                }
+                return false;
+            }
+
+            // --- Переход только если всё корректно ---
             const group = groupLabel.textContent.trim();
             const type = scheduleLabel.textContent.trim();
 
@@ -354,8 +396,8 @@ document.querySelectorAll('.toggle-password').forEach(btn => {
     });
 });
 </script>
-    <script src="../js/Users.js"></script>
-    <script src="../js/auth.js"></script>
+<script src="../js/Users.js"></script>
+<script src="../js/auth.js"></script>
 
 
 
