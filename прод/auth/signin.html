@@ -10,29 +10,115 @@
     <link rel="stylesheet" href="../css/style_site.css">
     <title>Расписание УРТК</title>
     <style>
-        .input-error {
-            border: 2px solid red !important;
-            outline: none;
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at 70% 30%, #232328 60%, #18181c 100%);
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            animation: bgFadeIn 1.2s cubic-bezier(.4,0,.2,1);
+        }
+        @keyframes bgFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        /* Подсветка выбранной опции */
-        .dropdown-option.selected {
-            background: #69A99B;
+        .auth_block {
+            width: 420px;
+            max-width: 95vw;
+            background: rgba(25,25,29,0.98);
+            border-radius: 24px;
+            box-shadow: 0 8px 40px 0 rgba(34, 139, 126, 0.18);
+            padding: 48px 36px 36px 36px;
+            margin: 0;
+            animation: cardAppear 0.8s cubic-bezier(.4,0,.2,1);
+            transition: box-shadow 0.3s;
+        }
+        
+
+        .h2_sign {
+            font-size: 1.3rem;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            color: #69A99B;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            gap: 10px;
+            opacity: 0.85;
+            animation: fadeIn 1.2s 0.2s both;
+        }
+        .h1_sign {
+            font-size: 1.7rem;
+            margin: 0 0 28px 0;
             color: #fff;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 0.01em;
+            animation: fadeIn 1.2s 0.3s both;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
         }
 
-        /* Анимация открытия/закрытия выпадающего списка */
-        .dropdown {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s cubic-bezier(.4, 0, .2, 1), opacity 0.3s;
-            opacity: 0;
+        .img_logo {
+            width: 36px !important;
+            height: 36px !important;
+            margin-left: 10px;
+            filter: drop-shadow(0 0 6px #69A99B44);
+            transition: filter 0.3s;
         }
 
-        .dropdown:not(.hidden) {
-            max-height: 300px;
-            opacity: 1;
-            box-shadow: 0 4px 16px 0 rgba(34, 139, 126, 0.10);
+        .form-container, .signup {
+            width: 100%;
+            animation: fadeIn 1.2s 0.4s both;
+        }
+
+        .row {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+        @media (max-width: 600px) {
+            .auth_block { padding: 18px 4vw 24px 4vw; border-radius: 14px; }
+            .row { flex-direction: column; gap: 8px; }
+        }
+
+        .margin { flex: 1; }
+
+        .input_sign, .input_combobox {
+            background: #18181c;
+            border: 1.5px solid #333;
+            color: #fff;
+            border-radius: 16px;
+            padding: 14px 18px;
+            font-size: 1.08rem;
+            margin-bottom: 18px;
+            transition: border 0.2s, box-shadow 0.2s;
+            outline: none;
+            width: 100%;
+            box-sizing: border-box;
+            animation: fadeIn 1.2s 0.5s both;
+        }
+        .input_sign:focus, .input_combobox:focus {
+            border: 1.5px solid #69A99B;
+            box-shadow: 0 0 0 2px #69A99B33;
+        }
+
+        .input-error {
+            border: 2px solid #ff4d4f !important;
+            background: #2a1818 !important;
+            animation: shake 0.3s;
+        }
+        @keyframes shake {
+            10%, 90% { transform: translateX(-2px);}
+            20%, 80% { transform: translateX(4px);}
+            30%, 50%, 70% { transform: translateX(-8px);}
+            40%, 60% { transform: translateX(8px);}
         }
 
         .input-sign-password-wrapper {
@@ -40,7 +126,6 @@
             display: flex;
             align-items: center;
         }
-
         .toggle-password {
             position: absolute;
             right: 12px;
@@ -50,24 +135,182 @@
             border: none;
             cursor: pointer;
             padding: 0;
+            transition: filter 0.2s;
         }
-
         .toggle-password svg {
             width: 22px;
             height: 22px;
             fill: #69A99B;
+            opacity: 0.8;
+            transition: fill 0.2s;
+        }
+        .toggle-password:hover svg {
+            fill: #69A99B;
+            opacity: 1;
+        }
+
+        .button_sign {
+            background: #69A99B;
+            color: #232328;
+            font-weight: 700;
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px 0 #00ffe733;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.1s, color 0.2s;
+            margin: -10px auto 0 auto;
+            display: block;
+            width: 70%;
+            height: 48px;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
+            animation: fadeIn 1.2s 0.7s both;
+            margin-bottom: 25px;
+        }
+
+.button_sign:hover, .button_sign:focus {
+    background: linear-gradient(90deg, #69A99B 0%, #00ffe7 100%);
+    box-shadow: 0 4px 24px 0 #00ffe7bb, 0 0 0 4px #69A99B55;
+    transform: translateY(-2px) scale(1.04);
+    color: #19191d;
+}
+
+        .my-schedule_2 {
+            position: static !important;
+            width: 100%;
+            margin: 24px 0 0 0;
+            background: #232328;
+            border-radius: 16px;
+            padding: 24px 18px;
+            box-sizing: border-box;
+            animation: fadeIn 1.2s 0.6s both;
+            box-shadow: 0 2px 16px 0 #69A99B11;
+        }
+
+        .dropdown-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        .input_combobox {
+            cursor: pointer;
+            padding-right: 38px;
+            background-color: black;
+            border: 1.5px solid #333;
+            color: #fff;
+            border-radius: 16px;
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+        .input_combobox:focus {
+            border: 1.5px solid #69A99B;
+            box-shadow: 0 0 0 2px #69A99B33;
+        }
+        .dropdown {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            width: 100%;
+            min-width: 160px;
+            max-width: 100%;
+            background-color: #232328;
+            margin-top: 2px;
+            border-radius: 16px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            padding: 5px 0;
+            box-shadow: 0 0 16px rgba(0,0,0,0.18);
+            box-sizing: border-box;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px) scale(0.98);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .dropdown:not(.hidden) {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0) scale(1);
+        }
+        .dropdown-option {
+            background: none;
+            border: none;
+            color: #fff;
+            text-align: left;
+            padding: 12px 22px;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: background 0.25s, color 0.25s;
+            width: 100%;
+            border-radius: 12px;
+            font-size: 1rem;
+        }
+        .dropdown-option:hover, .dropdown-option.selected {
+            background-color: #69A99B;
+            color: #232328;
+        }
+
+        .label, #secondLabel {
+            color: #b7b7c7;
+            font-size: 0.97rem;
+            margin-bottom: 6px;
+            margin-left: 3%;
+            margin-top: 0;
+            letter-spacing: 0.01em;
+            font-weight: 500;
+            opacity: 0.85;
+        }
+
+        h4 {
+            font-size: 1.08rem;
+            color: #69A99B;
+            margin-bottom: 10px;
+            margin-left: 3%;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            opacity: 0.9;
+        }
+
+        /* Анимация загрузки */
+        #loader-bg {
+            position: fixed;
+            z-index: 9999;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 30%, #232328 60%, #18181c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s;
+        }
+        .loader {
+            width: 64px;
+            height: 64px;
+            border: 6px solid #69A99B;
+            border-top: 6px solid #00ffe7;
+            border-radius: 50%;
+            animation: spinLoader 1s linear infinite;
+            box-shadow: 0 0 24px #00ffe7aa;
+        }
+        @keyframes spinLoader {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+        #loader-bg.loaded {
+            opacity: 0;
+            pointer-events: none;
         }
     </style>
+
 </head>
 
 <body>
+    <!-- Анимация загрузки -->
+    <div id="loader-bg">
+        <div class="loader"></div>
+    </div>
     <div id="sign" class="auth_block bgc flex">
         <form id="registerForm">
             <div class="flex">
                 <h2 class="h2_sign">Расписание УРТК <img class="img_logo" src="../image/лого.png"></h2>
                 <h1 class="h1_sign">Регистрация на платформе</h1>
             </div>
-            <div class="form-container">
                 <div class="signup">
                     <div class="row">
                         <div class="margin">
@@ -112,87 +355,93 @@
                 </div>
                 <div class="my-schedule_2">
                     <h4 style="
-                    color: white;
-                    font-family: 'Inter', sans-serif;
-                    margin-left: 3%;
-                    ">Ваше расписание
-                    </h4>
+        color: white;
+        font-family: 'Inter', sans-serif;
+        margin-left: 3%;
+    ">Ваше расписание
+    </h4>
                     <p class="label" style="
-                    margin-bottom: 1%;
-                    color: white;
-                    font-family: 'Inter', sans-serif;
-                    margin-left: 3%;
-                    font-size: 13px;
-                    margin-top: -1%;
-                    ">Тип расписания
-                    </p>
-                    <button class="input_combobox" style="position: relative" aria-haspopup="true" aria-expanded="false"
-                        ;>
-                        <span style="
-                        position: relative;
-                        text-align: left;
-                        top: 0;
-                        font-family: 'Inter', sans-serif;
-                        margin-right: 90%;
-                        color: white;
-                        white-space: nowrap;
-                        display: inline-block;
-                        max-width: 100%;
-                        ">Студент
-                        </span>
-                        <svg style="
-                            position: absolute;
-                            right: 10px;
-                            top: 50%;
-                            transform: translateY(-50%);
-                        " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="m7 15 5 5 5-5"></path>
-                            <path d="m7 9 5-5 5 5"></path>
-                        </svg>
-                    </button>
-                    <div id="scheduleTypeDropdown" class="dropdown hidden">
-                        <button class="dropdown-option">Студент</button>
-                        <button class="dropdown-option">По преподавателю</button>
+        margin-bottom: 1%;
+        color: white;
+        font-family: 'Inter', sans-serif;
+        margin-left: 3%;
+        font-size: 13px;
+        margin-top: -1%;
+    ">Тип расписания
+    </p>
+                    <!-- Обёртка для первого выпадающего списка -->
+                    <div class="dropdown-wrapper">
+                        <button class="input_combobox" style="position: relative" aria-haspopup="true" aria-expanded="false">
+                            <span style="
+                position: relative;
+                text-align: left;
+                top: 0;
+                font-family: 'Inter', sans-serif;
+                margin-right: 90%;
+                color: white;
+                white-space: nowrap;
+                display: inline-block;
+                max-width: 100%;
+            ">Студент
+            </span>
+                            <svg style="
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+            " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m7 15 5 5 5-5"></path>
+                                <path d="m7 9 5-5 5 5"></path>
+                            </svg>
+                        </button>
+                        <div id="scheduleTypeDropdown" class="dropdown hidden">
+                            <button class="dropdown-option">Студент</button>
+                            <button class="dropdown-option">По преподавателю</button>
+                        </div>
                     </div>
                     <p id="secondLabel" style="
-                        margin-bottom: 1%;
-                        margin-top: 15px;
-                        color: white;
-                        font-family: 'Inter', sans-serif;
-                        margin-left: 3%;
-                        font-size: 13px;
-                        ">
+        margin-bottom: 1%;
+        margin-top: 15px;
+        color: white;
+        font-family: 'Inter', sans-serif;
+        margin-left: 3%;
+        font-size: 13px;
+    ">
                         Группа
                     </p>
-                    <button class="input_combobox" style="
-                    position: relative;
-                    background-color: black;
-                    color: white;
-                    text-align: left;
-                    ">
-                        <span style="
-                        position: relative;
-                        left: 5px;
-                        top: 0;
-                        font-family: 'Inter', sans-serif;
-                        ">Выберите...
-                        </span>
-                        <svg style="
-                            position: absolute;
-                            right: 10px;
-                            top: 50%;
-                            transform: translateY(-50%);
-                        " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="m7 15 5 5 5-5"></path>
-                            <path d="m7 9 5-5 5 5"></path>
-                        </svg>
-                    </button>
-                    <div id="groupDropdown" class="dropdown hidden"></div>
+                    <!-- Обёртка для второго выпадающего списка -->
+                    <div class="dropdown-wrapper">
+                        <button class="input_combobox" style="
+            position: relative;
+            background-color: black;
+            color: white;
+            text-align: left;
+        ">
+                            <span style="
+                position: relative;
+                left: 5px;
+                top: 0;
+                font-family: 'Inter', sans-serif;
+            ">Выберите...
+            </span>
+                            <svg style="
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+            " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m7 15 5 5 5-5"></path>
+                                <path d="m7 9 5-5 5 5"></path>
+                            </svg>
+                        </button>
+                        <div id="groupDropdown" class="dropdown hidden"></div>
+                    </div>
                     <button class="button_sign margin_sign" id="registerBtn">Зарегестрироваться</button>
                 </div>
-            </div>
+                <!-- ...existing code... -->
+            
 
         </form>
     </div>
@@ -394,6 +643,15 @@ document.querySelectorAll('.toggle-password').forEach(btn => {
         passwordsVisible = !passwordsVisible;
         setPasswordVisibility(passwordsVisible);
     });
+});
+</script>
+<script>
+window.addEventListener('load', function() {
+    const loader = document.getElementById('loader-bg');
+    loader.classList.add('loaded');
+    setTimeout(() => {
+        loader.style.display = 'none';
+    }, 600);
 });
 </script>
 <script src="../js/Users.js"></script>
